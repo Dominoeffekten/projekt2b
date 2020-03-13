@@ -20,11 +20,10 @@ header nav ul li {
 main {
     padding: 1em;
 }
-table, td {
-    border: 1px solid blue;
-}
-td {
-    padding: 3px;
+th, td {
+    outline: 1px solid blue;
+    padding: 14px;
+    margin: 10px;
 }
 .col_l {
     font-weight: 600;
@@ -32,23 +31,5 @@ td {
 }
 .col_num {
     text-align: right;
-}
-#continents, #countries, #cities, #weather {
-    float: left;
-    margin: 1em 1em 0 0;
-    padding: 3px;
-    width: 23%;
-}
-#continents {
-    outline: 1px solid red;
-}
-#countries {
-    outline: 1px solid green;
-}
-#cities {
-    outline: 1px solid blue;
-}
-#weather {
-    outline: 1px solid pink;
 }
 

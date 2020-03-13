@@ -1,9 +1,9 @@
 doctype html
 html
     head
-        title= title
+        title= 'Fragments of the World'
         link(rel='stylesheet', href='/stylesheets/style.css')
-        script(type='module' src='/javascripts/page.js')
+        script(type='module' src=scriptLink)
     body
         header
             nav
@@ -11,6 +11,14 @@ html
                     li
                         a(href="/") Home
                     li
-                        a(href="/worldview") World View
+                        a(href="/worldview") Continents
+                    li
+                        a(href="/country") Country
+                    li
+                        a(href="/city") City
         main
-            block content
+            block all
+                h1= 'Fragments of the World'
+                h2= subtitle
+                p= "On this page you can read all information about world continents. You are able to create, read, update and delete continents from this list"
+                    block content
