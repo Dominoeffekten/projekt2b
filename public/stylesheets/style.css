@@ -1,0 +1,54 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+header {
+    text-align: right;
+    width: 100%;
+    border: 0px solid red;
+}
+header nav ul {
+    list-style: none;
+    margin-right: 10px;
+    text-align: right;
+}
+header nav ul li {
+    border: 1px solid gray;
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+}
+main {
+    padding: 1em;
+}
+table, td {
+    border: 1px solid blue;
+}
+td {
+    padding: 3px;
+}
+.col_l {
+    font-weight: 600;
+    text-align: right;
+}
+.col_num {
+    text-align: right;
+}
+#continents, #countries, #cities, #weather {
+    float: left;
+    margin: 1em 1em 0 0;
+    padding: 3px;
+    width: 23%;
+}
+#continents {
+    outline: 1px solid red;
+}
+#countries {
+    outline: 1px solid green;
+}
+#cities {
+    outline: 1px solid blue;
+}
+#weather {
+    outline: 1px solid pink;
+}
+

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+    main
+    h3= subsubtitle
+
+    form(id='languageSelectForm' action='/langrankone' method='post')
+        div
+            select(name='language')
+                each language in languages
+                    option #{language.language}
+        p
+            input(type='submit' value='Go')

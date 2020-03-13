@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+    main
+        table
+            each lang in languages
+                tr
+                    td #{lang.rank}
+                    td #{lang.language}
+                    td.col_num #{lang.count}

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    h1= title
+    h2= countries[0].name
+    table
+        each country in countries
+            tr
+                td.col_l Local Name
+                td #{country.localname}
+            tr
+                td.col_l Countrycode
+                td #{country.code}
+            tr
+                td.col_l Continent
+                td #{country.continent}
+            tr
+                td.col_l Region
+                td #{country.region}
+            tr
+                td.col_l Area in sq km
+                td #{country.surfacearea}
+            tr
+                td.col_l Year of Independence
+                td #{country.indepyear}
+            tr
+                td.col_l Population
+                td #{country.population}
+            tr
+                td.col_l Life Expectancy
+                td #{country.lifeexpectancy}
+            tr
+                td.col_l GNP
+                td #{country.gnp}
+            tr
+                td.col_l Government Form
+                td #{country.governmentform}
+            tr
+                td.col_l Head of State
+                td #{country.headofstate}
+
+

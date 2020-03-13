@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+
+    form(id='countrySelectForm' action='/country' method='post')
+        div
+            select(name='ctry')
+                each country in countries
+                    option #{country.name}
+        p
+            input(type='submit' value='Go')

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  h2= subtitle
+  main
+    div
+        h3 Countries per Continent
+        table
+            each cty in countries
+                tr
+                    td #{cty.continent}
+                    td #{cty.name}

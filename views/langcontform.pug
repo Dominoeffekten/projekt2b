@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+
+    form(id='continentSelectForm' action='/langcont' method='post')
+        div
+            select(name='continent')
+                each continent in continents
+                    option #{continent.name}
+        p
+            input(type='submit' value='Go')

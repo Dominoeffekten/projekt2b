@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type='module' src='/javascripts/page.js')
+    body
+        header
+            nav
+                ul
+                    li
+                        a(href="/") Home
+                    li
+                        a(href="/worldview") World View
+        main
+            block content

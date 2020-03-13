@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  h2= subtitle
+  main
+    div
+        h3 #{count} cities have namesakes in other countries
+    div
+        each city in cities
+            p #{city.name}, #{city.countrycode}, #{city.district}
