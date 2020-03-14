@@ -13,6 +13,7 @@ exports.getCountries = async function (que, sort) {
     }
 }
 
+
 exports.postCountry = async function (req) {
     let chk = { name: req.body.name };  // check object for existence
     let country = new Country({                     // create obejct in db-format

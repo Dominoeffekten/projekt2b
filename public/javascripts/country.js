@@ -66,15 +66,26 @@ const showCountries = function (e) {
         let upButton = document.createElement('button');
         var upText = document.createTextNode("Update");
         let td5 = document.createElement('td');
+        let form = document.createElement('form');
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "/countries");
+
+        let input = document.createElement('input');
+        input.setAttribute("value", country._id);
+        input.setAttribute("name", "id");
+        input.setAttribute("type", "hidden");
+
         let delButton = document.createElement('button');
         var delText = document.createTextNode("Delete");
         delButton.setAttribute("id", country._id);
+        delButton.setAttribute("type", "submit");
+        
         //td5.setAttribute("class", "removeButton");
 
         delButton.addEventListener("click", function () {
-            var countryId = this.getAttribute("id");
-            alert("delete country._id: " + countryId);
-            console.log("this button works ... YAY");
+            //var countryId = this.getAttribute("id");
+            //alert("delete country._id: " + countryId);
+            console.log("this button works ... YAY"); 
         });
 
         td.appendChild(name);
@@ -84,7 +95,9 @@ const showCountries = function (e) {
         upButton.appendChild(upText);
         td4.appendChild(upButton);
         delButton.appendChild(delText);
-        td5.appendChild(delButton);
+        form.appendChild(input);
+        form.appendChild(delButton);
+        td5.appendChild(form);
         tr.appendChild(td);
         tr.appendChild(td1);
         tr.appendChild(td2);

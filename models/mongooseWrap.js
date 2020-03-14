@@ -44,7 +44,7 @@ exports.upsert = async function(url, dbn, obj, query, chk) {
 }
 
 //Sletter efter id - er ikke testet
-exports.remove = async function(url, dbn, obj, query, chk) {
+exports.remove = async function(url, dbn, obj, id) {
     const constr = `mongodb://${url}:27017/${dbn}`;
     await mongoose.connect(constr, conparam);
     const db = mongoose.connection;

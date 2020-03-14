@@ -37,6 +37,14 @@ router.get('/countries', async function(req, res, next) {
     res.json(countries);
 });
 
+router.post('/countries', function(req, res, next) {
+
+    console.log("Yah du kom herind");
+ });
+
+
+
+
 //city
 router.get('/city', async function(req, res, next) {
     res.render('city', {
@@ -46,7 +54,7 @@ router.get('/city', async function(req, res, next) {
 });
 router.get('/countries/:cont', async function(req, res, next) {
     let countries = await modCountry.getCountries({continent: req.params.cont}, {sort: {name: 1}});
-    console.log(countries);
+    //console.log(countries);
     res.json(countries);
     
 });
@@ -61,6 +69,16 @@ router.get('/cities/:city', async function(req, res, next) {
     let city = await modCities.getCities({countrycode: req.params.city}, {sort: {name: 1}});
     res.json(city);
 });
+
+router.post('/city', async function(req, res, next) {
+    console.log(req.body.id);
+    let delCity = modCities.delCities({id_: req.body.id});
+    console.log(delCity);
+    console.log("Yah du kom herind");
+});
+
+
+
 
 
 module.exports = router;

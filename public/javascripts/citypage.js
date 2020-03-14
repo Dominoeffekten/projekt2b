@@ -133,18 +133,30 @@ const showCities = function (e) {
             let upButton = document.createElement('button');
             var upText = document.createTextNode("Update"); 
         let td5 = document.createElement('td');
+            let form = document.createElement('form');
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "/city");
+
+            let input = document.createElement('input');
+            input.setAttribute("value", city._id);
+            input.setAttribute("name", "id");
+            input.setAttribute("type", "hidden");
+            
             let delButton = document.createElement('button');
             var delText = document.createTextNode("Delete"); 
-            delButton.setAttribute("id", city._id);
-            
+   
 
         td.appendChild(name);
         td1.appendChild(code);
         td3.appendChild(pop);
         upButton.appendChild(upText);
         td4.appendChild(upButton);
+
         delButton.appendChild(delText);
-        td5.appendChild(delButton)
+        form.appendChild(input);
+        form.appendChild(delButton);
+        td5.appendChild(form);
+        
         tr.appendChild(td);
         tr.appendChild(td1);
         tr.appendChild(td3);
