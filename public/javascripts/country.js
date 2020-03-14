@@ -19,16 +19,12 @@ const showCountries = function (e) {
         element.removeChild(element.firstChild);
     }
 
-    let div = document.createElement("div");
-    let h3 = document.createElement('h3');
-    let txt = document.createTextNode('The countries');
-    h3.appendChild(txt);
-    div.appendChild(h3);
-
     //Opret forbindelse til api continent indholdet
     let countries = JSON.parse(e.target.responseText);
 
+    let div = document.createElement("div");
     let tabel = document.createElement("table");
+    
     let th1 = document.createElement('th');
         let name1 = document.createTextNode("Name");
     let th2 = document.createElement('th');

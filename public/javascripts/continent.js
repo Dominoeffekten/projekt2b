@@ -22,16 +22,11 @@ const showContinents = function(e) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
-    let div = document.createElement("div");
-    let h3 = document.createElement('h3');
-    let txt = document.createTextNode('The Continents');
-    h3.appendChild(txt);
-    div.appendChild(h3);
-    
+
     //Opret forbindelse til api continent indholdet
     let continents = JSON.parse(e.target.responseText);
-
-
+    
+    let div = document.createElement("div");
     let tabel = document.createElement("table");
 
     continents.forEach(function(continent) {

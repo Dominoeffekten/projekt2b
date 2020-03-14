@@ -24,17 +24,17 @@ const getCities = function(ev) {
  * callback function for the above AJaX
  */
 const showContinents = function(e) {
-    /*
-     * here you put the ajax response onto your page DOM
-     */
+
+    //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
     let element = $("contdata");
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
     let div = document.createElement("div");
+
     let h3 = document.createElement('h3');
-    let txt = document.createTextNode('Choose a countinent');
+    let txt = document.createTextNode('Choose a continent');
     h3.appendChild(txt);
     div.appendChild(h3);
 
@@ -55,9 +55,8 @@ const showContinents = function(e) {
 }
 
 const showCountries = function (e) {
-    /*
-     * here you put the ajax response onto your page DOM
-     */
+    
+    //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
     let element = $("countdata");
     while (element.firstChild) {
@@ -65,9 +64,10 @@ const showCountries = function (e) {
     }
     let div = document.createElement("div");
     let h3 = document.createElement('h3');
-    let txt = document.createTextNode('The Countries');
+    let txt = document.createTextNode('Choose a country');
     h3.appendChild(txt);
     div.appendChild(h3);
+
     let countries = JSON.parse(e.target.responseText);
     let sel = document.createElement('select');
     sel.setAttribute('id', 'chooseCountry');
@@ -84,23 +84,18 @@ const showCountries = function (e) {
 };
 
 const showCities = function (e) {
-    /*
-     * here you put the ajax response onto your page DOM
-     */
+    
+    //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
     let element = $("citydata");
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
 
-    let div = document.createElement("div");
-    let h3 = document.createElement('h3');
-    let txt = document.createTextNode('The cities');
-    h3.appendChild(txt);
-    div.appendChild(h3);
-
     //Opret forbindelse til api continent indholdet
     let cities = JSON.parse(e.target.responseText);
+
+    let div = document.createElement("div");
 
     let tabel = document.createElement("table");
     let th1 = document.createElement('th');

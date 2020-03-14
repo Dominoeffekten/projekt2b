@@ -42,12 +42,11 @@ router.get('/city', async function(req, res, next) {
     res.render('city', {
         scriptLink:'/javascripts/citypage.js',
         subtitle: 'The cities',
-        
     });
 });
 router.get('/countries/:cont', async function(req, res, next) {
     let countries = await modCountry.getCountries({continent: req.params.cont}, {sort: {name: 1}});
-    //console.log(countries);
+    console.log(countries);
     res.json(countries);
     
 });
