@@ -56,6 +56,7 @@ const showCountries = function (e) {
         let tr = document.createElement('tr');
         let td = document.createElement('td');
             let name = document.createTextNode(country.name);
+            td.setAttribute("class", country._id);
         let td1 = document.createElement('td');
             let code = document.createTextNode(country.code);
         let td2 = document.createElement('td');

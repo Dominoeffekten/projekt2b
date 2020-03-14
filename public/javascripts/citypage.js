@@ -125,6 +125,7 @@ const showCities = function (e) {
         let tr = document.createElement('tr');
         let td = document.createElement('td');
             let name = document.createTextNode(city.name);
+            td.setAttribute("class", city._id);
         let td1 = document.createElement('td');
             let code = document.createTextNode(city.countrycode);
         let td3 = document.createElement('td');
