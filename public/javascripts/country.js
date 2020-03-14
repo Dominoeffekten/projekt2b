@@ -55,22 +55,27 @@ const showCountries = function (e) {
         
         let tr = document.createElement('tr');
         let td = document.createElement('td');
-            let name = document.createTextNode(country.name);
+        let name = document.createTextNode(country.name);
         let td1 = document.createElement('td');
-            let code = document.createTextNode(country.code);
+        let code = document.createTextNode(country.code);
         let td2 = document.createElement('td');
-            let continent = document.createTextNode(country.continent);
+        let continent = document.createTextNode(country.continent);
         let td3 = document.createElement('td');
-            let pop = document.createTextNode(country.population);
+        let pop = document.createTextNode(country.population);
         let td4 = document.createElement('td');
-            let upButton = document.createElement('button');
-            var upText = document.createTextNode("Update"); 
+        let upButton = document.createElement('button');
+        var upText = document.createTextNode("Update"); 
         let td5 = document.createElement('td');
-            let delButton = document.createElement('button');
-            var delText = document.createTextNode("Delete"); 
-            delButton.setAttribute("id", country._id);
-            //td5.setAttribute("class", "removeButton");
-            
+        let delButton = document.createElement('button');
+        var delText = document.createTextNode("Delete"); 
+        delButton.setAttribute("id", country._id);
+        //td5.setAttribute("class", "removeButton");
+
+        delButton.addEventListener("click", function() {
+            var countryId = this.getAttribute("id");
+            alert("delete country._id: " + countryId);
+            console.log("this button works ... YAY");
+        });
     
         td.appendChild(name);
         td1.appendChild(code);
@@ -87,15 +92,15 @@ const showCountries = function (e) {
         tr.appendChild(td4);
         tr.appendChild(td5);
         tabel.appendChild(tr);
+
+
     });
 
     div.appendChild(tabel);
     $("countdata").appendChild(div);
 
     
-    $(country._id).addEventListener("click", function() {
-        alert("hello");
-    });
+
     
     
 
