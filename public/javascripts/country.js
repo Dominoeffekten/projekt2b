@@ -56,7 +56,6 @@ const showCountries = function (e) {
         let tr = document.createElement('tr');
         let td = document.createElement('td');
             let name = document.createTextNode(country.name);
-            td.setAttribute("class", country._id);
         let td1 = document.createElement('td');
             let code = document.createTextNode(country.code);
         let td2 = document.createElement('td');
@@ -64,14 +63,23 @@ const showCountries = function (e) {
         let td3 = document.createElement('td');
             let pop = document.createTextNode(country.population);
         let td4 = document.createElement('td');
-            
+            let upButton = document.createElement('button');
+            var upText = document.createTextNode("Update"); 
         let td5 = document.createElement('td');
+            let delButton = document.createElement('button');
+            var delText = document.createTextNode("Delete"); 
+            delButton.setAttribute("id", country._id);
+            //td5.setAttribute("class", "removeButton");
             
-
+    
         td.appendChild(name);
         td1.appendChild(code);
         td2.appendChild(continent);
         td3.appendChild(pop);
+        upButton.appendChild(upText);
+        td4.appendChild(upButton);
+        delButton.appendChild(delText);
+        td5.appendChild(delButton);
         tr.appendChild(td);
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -83,6 +91,13 @@ const showCountries = function (e) {
 
     div.appendChild(tabel);
     $("countdata").appendChild(div);
-};
 
+    
+    $(country._id).addEventListener("click", function() {
+        alert("hello");
+    });
+    
+    
+
+};
 window.addEventListener("load", getCountries);

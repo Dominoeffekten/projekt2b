@@ -125,19 +125,26 @@ const showCities = function (e) {
         let tr = document.createElement('tr');
         let td = document.createElement('td');
             let name = document.createTextNode(city.name);
-            td.setAttribute("class", city._id);
         let td1 = document.createElement('td');
             let code = document.createTextNode(city.countrycode);
         let td3 = document.createElement('td');
             let pop = document.createTextNode(city.population);
         let td4 = document.createElement('td');
-            
+            let upButton = document.createElement('button');
+            var upText = document.createTextNode("Update"); 
         let td5 = document.createElement('td');
+            let delButton = document.createElement('button');
+            var delText = document.createTextNode("Delete"); 
+            delButton.setAttribute("id", city._id);
             
 
         td.appendChild(name);
         td1.appendChild(code);
         td3.appendChild(pop);
+        upButton.appendChild(upText);
+        td4.appendChild(upButton);
+        delButton.appendChild(delText);
+        td5.appendChild(delButton)
         tr.appendChild(td);
         tr.appendChild(td1);
         tr.appendChild(td3);
