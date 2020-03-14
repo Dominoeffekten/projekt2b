@@ -1,11 +1,11 @@
 "use strict";
-import {$} from "./modules/nQuery.js";
-import {Ajax} from "./modules/Ajax.js";
+import { $ } from "./modules/nQuery.js";
+import { Ajax } from "./modules/Ajax.js";
 
 /*
  * Event handler for button - create ajax object and get data
  */
-const getCountries = function(ev) { //country
+const getCountries = function (ev) { //country
     let req = Object.create(Ajax);
     req.init();
     req.getFile(`/countries`, showCountries);
@@ -24,20 +24,20 @@ const showCountries = function (e) {
 
     let div = document.createElement("div");
     let tabel = document.createElement("table");
-    
+
     let th1 = document.createElement('th');
-        let name1 = document.createTextNode("Name");
+    let name1 = document.createTextNode("Name");
     let th2 = document.createElement('th');
-        let cc = document.createTextNode("Country code");
+    let cc = document.createTextNode("Country code");
     let th3 = document.createElement('th');
-        let ccon = document.createTextNode("Continent");
+    let ccon = document.createTextNode("Continent");
     let th4 = document.createElement('th');
-        let pop1 = document.createTextNode("Population");
+    let pop1 = document.createTextNode("Population");
     let th5 = document.createElement('th');
-        let up = document.createTextNode("Update");
+    let up = document.createTextNode("Update");
     let th6 = document.createElement('th');
-        let del = document.createTextNode("Delete");
-    
+    let del = document.createTextNode("Delete");
+
     th1.appendChild(name1);
     th2.appendChild(cc);
     th3.appendChild(ccon);
@@ -51,8 +51,8 @@ const showCountries = function (e) {
     tabel.appendChild(th5);
     tabel.appendChild(th6);
 
-    countries.forEach(function(country) {
-        
+    countries.forEach(function (country) {
+
         let tr = document.createElement('tr');
         let td = document.createElement('td');
         let name = document.createTextNode(country.name);
@@ -64,19 +64,19 @@ const showCountries = function (e) {
         let pop = document.createTextNode(country.population);
         let td4 = document.createElement('td');
         let upButton = document.createElement('button');
-        var upText = document.createTextNode("Update"); 
+        var upText = document.createTextNode("Update");
         let td5 = document.createElement('td');
         let delButton = document.createElement('button');
-        var delText = document.createTextNode("Delete"); 
+        var delText = document.createTextNode("Delete");
         delButton.setAttribute("id", country._id);
         //td5.setAttribute("class", "removeButton");
 
-        delButton.addEventListener("click", function() {
+        delButton.addEventListener("click", function () {
             var countryId = this.getAttribute("id");
             alert("delete country._id: " + countryId);
             console.log("this button works ... YAY");
         });
-    
+
         td.appendChild(name);
         td1.appendChild(code);
         td2.appendChild(continent);
@@ -99,10 +99,10 @@ const showCountries = function (e) {
     div.appendChild(tabel);
     $("countdata").appendChild(div);
 
-    
 
-    
-    
+
+
+
 
 };
 window.addEventListener("load", getCountries);
