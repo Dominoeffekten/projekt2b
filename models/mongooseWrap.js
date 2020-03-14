@@ -42,3 +42,20 @@ exports.upsert = async function(url, dbn, obj, query, chk) {
         return stuff;
     }
 }
+
+//Sletter efter id - er ikke testet
+exports.remove = async function(url, dbn, obj, query, chk) {
+    const constr = `mongodb://${url}:27017/${dbn}`;
+    await mongoose.connect(constr, conparam);
+    const db = mongoose.connection;
+    let stuff = null;
+    try {
+        stuff = await obj.findByIdAndDelete(id);
+        console.log("Successful deletion");
+    } catch(err) {
+        console.log(error);
+    } finally {
+        db.close();
+        return stuff;
+    }
+}
