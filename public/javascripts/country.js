@@ -104,70 +104,105 @@ const showCountries = function (e) {
         tabel.appendChild(tr);
 
 
-    });
-
     div.appendChild(tabel);
     $("countdata").appendChild(div);
+    });
 
+    //lav en formular
     let formular = $("countryForm");
-    let form = document.createElement("form");
+    let forms = document.createElement("form");
 
     let input1 = document.createElement("input");
     input1.setAttribute("name", "code");
-    form.appendChild(input1);
+    input1.setAttribute("placeholder", "code");
+    forms.appendChild(input1);
+
     let input2 = document.createElement("input");
     input2.setAttribute("name", "name");
-    form.appendChild(input2);
-    let input3 = document.createElement("input");
-    input3.setAttribute("name", "continent");
-    form.appendChild(input3);
+    input2.setAttribute("placeholder", "name");
+    forms.appendChild(input2);
+
+    let continents = JSON.parse(e.target.responseText); //Show continent
+    let sel = document.createElement('select');
+    sel.setAttribute('id', 'chooseContinent');
+
+    continents.forEach(function(continent) {
+        let opt = document.createElement('option');
+        let opttext = document.createTextNode(continent.name);
+        opt.setAttribute("value", continent.name);
+        opt.appendChild(opttext);
+        sel.appendChild(opt);
+    });
+    forms.appendChild(sel);
+
+
+
     let input4 = document.createElement("input");
     input4.setAttribute("name", "region");
-    form.appendChild(input4);
+    input4.setAttribute("placeholder", "region");
+    forms.appendChild(input4);
+
     let input5 = document.createElement("input");
     input5.setAttribute("name", "surfacearea");
-    form.appendChild(input5);
+    input5.setAttribute("placeholder", "surfacearea");
+    forms.appendChild(input5);
+
     let input6 = document.createElement("input");
     input6.setAttribute("name", "indepyear");
-    form.appendChild(input6);
+    input6.setAttribute("placeholder", "indepyear");
+    forms.appendChild(input6);
+
     let input7 = document.createElement("input");
     input7.setAttribute("name", "population");
-    form.appendChild(input7);
+    input7.setAttribute("placeholder", "population");
+    forms.appendChild(input7);
+
     let input8 = document.createElement("input");
     input8.setAttribute("name", "lifeexpectancy");
-    form.appendChild(input8);
+    input8.setAttribute("placeholder", "lifeexpectancy");
+    forms.appendChild(input8);
+
     let input9 = document.createElement("input");
     input9.setAttribute("name", "gnp");
-    form.appendChild(input9);
+    input9.setAttribute("placeholder", "gnp");
+    forms.appendChild(input9);
+
     let input10 = document.createElement("input");
     input10.setAttribute("name", "gnpold");
-    form.appendChild(input10);
+    input10.setAttribute("placeholder", "gnpold");
+    forms.appendChild(input10);
+
     let input11 = document.createElement("input");
     input11.setAttribute("name", "localname");
-    form.appendChild(input11);
+    input11.setAttribute("placeholder", "localname");
+    forms.appendChild(input11);
+
     let input12 = document.createElement("input");
     input12.setAttribute("name", "governmentform");
-    form.appendChild(input12);
+    input12.setAttribute("placeholder", "governmentform");
+    forms.appendChild(input12);
+
     let input13 = document.createElement("input");
     input13.setAttribute("name", "headofstate");
-    form.appendChild(input13);
+    input13.setAttribute("placeholder", "headofstate");
+    forms.appendChild(input13);
+
     let input14 = document.createElement("input");
     input14.setAttribute("name", "capital");
-    form.appendChild(input14);
+    input13.setAttribute("placeholder", "capital");
+    forms.appendChild(input14);
+
     let input15 = document.createElement("input");
     input15.setAttribute("name", "code2");
-    form.appendChild(input15);
+    input13.setAttribute("placeholder", "code2");
+    forms.appendChild(input15);
+
     let submitButton = document.createElement("button");
     let buttonName = document.createTextNode("Add new country");
     submitButton.appendChild(buttonName);
-    form.appendChild(submitButton);
+    forms.appendChild(submitButton);
 
-    formular.appendChild(form);
-
-
-
-
-
+    formular.appendChild(forms);
 
 };
 window.addEventListener("load", getCountries);
