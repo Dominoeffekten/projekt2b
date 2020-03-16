@@ -109,6 +109,61 @@ const showCountries = function (e) {
     div.appendChild(tabel);
     $("countdata").appendChild(div);
 
+    let formular = $("countryForm");
+    let form = document.createElement("form");
+
+    let input1 = document.createElement("input");
+    input1.setAttribute("name", "code");
+    form.appendChild(input1);
+    let input2 = document.createElement("input");
+    input2.setAttribute("name", "name");
+    form.appendChild(input2);
+    let input3 = document.createElement("input");
+    input3.setAttribute("name", "continent");
+    form.appendChild(input3);
+    let input4 = document.createElement("input");
+    input4.setAttribute("name", "region");
+    form.appendChild(input4);
+    let input5 = document.createElement("input");
+    input5.setAttribute("name", "surfacearea");
+    form.appendChild(input5);
+    let input6 = document.createElement("input");
+    input6.setAttribute("name", "indepyear");
+    form.appendChild(input6);
+    let input7 = document.createElement("input");
+    input7.setAttribute("name", "population");
+    form.appendChild(input7);
+    let input8 = document.createElement("input");
+    input8.setAttribute("name", "lifeexpectancy");
+    form.appendChild(input8);
+    let input9 = document.createElement("input");
+    input9.setAttribute("name", "gnp");
+    form.appendChild(input9);
+    let input10 = document.createElement("input");
+    input10.setAttribute("name", "gnpold");
+    form.appendChild(input10);
+    let input11 = document.createElement("input");
+    input11.setAttribute("name", "localname");
+    form.appendChild(input11);
+    let input12 = document.createElement("input");
+    input12.setAttribute("name", "governmentform");
+    form.appendChild(input12);
+    let input13 = document.createElement("input");
+    input13.setAttribute("name", "headofstate");
+    form.appendChild(input13);
+    let input14 = document.createElement("input");
+    input14.setAttribute("name", "capital");
+    form.appendChild(input14);
+    let input15 = document.createElement("input");
+    input15.setAttribute("name", "code2");
+    form.appendChild(input15);
+    let submitButton = document.createElement("button");
+    let buttonName = document.createTextNode("Add new country");
+    submitButton.appendChild(buttonName);
+    form.appendChild(submitButton);
+
+    formular.appendChild(form);
+
 
 
 

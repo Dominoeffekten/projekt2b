@@ -32,4 +32,12 @@ th, td {
 .col_num {
     text-align: right;
 }
+#countryForm {
+    display: flex;
+    justify-content: space-between;
+}
 
+#countryForm input {
+    width:40%;
+    margin:5px;
+}

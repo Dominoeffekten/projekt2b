@@ -28,26 +28,35 @@ router.get('/continents', async function(req, res, next) {
 //continent slut
 
 //country start
+// load country site
 router.get('/country', async function(req, res, next) {
+    res.render('country', {
+        scriptLink:'/javascripts/country.js',
+        subtitle: 'The countries',
+    });
+});
+// add new country
+router.post('/country', async function(req, res, next) {
+    let delCountry = modCountry.postCountry(req);
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',
         
     });
 });
+// loads the db content for the country site
 router.get('/countries', async function(req, res, next) {
     let countries = await modCountry.getCountries({}, {sort: {continent: 1}});
     //console.log(countries);
     res.json(countries);
 });
-
+// deletes country from db
 router.post('/countries', async function(req, res, next) {
     let delCountry = modCountry.delCountries({name: req.body.id});
     console.log("Yah du kom herind");
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',
-        
     });
 });
 // countries slut
