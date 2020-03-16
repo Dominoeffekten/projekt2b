@@ -50,7 +50,7 @@ exports.remove = async function(url, dbn, obj, id) {
     const db = mongoose.connection;
     let stuff = null;
     try {
-        stuff = await obj.findByIdAndDelete(id);
+        stuff = await obj.removeById(id);
         console.log("Successful deletion");
     } catch(err) {
         console.log(error);

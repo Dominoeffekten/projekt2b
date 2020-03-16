@@ -15,7 +15,7 @@ exports.delCities = async function (que, sort, id) {
     if (sort === null)
         sort = {sort: {name: 1}};
     try {
-        let cs = await mon.remove("localhost", "world", id);
+        let cs = await mon.remove("localhost", "world", "city", id);
         return cs;
     } catch (e) {
         console.log(e);

@@ -75,7 +75,7 @@ router.get('/cities/:city', async function(req, res, next) {
 
 router.post('/city', async function(req, res, next) {
     console.log(req.body.id);
-    let delCity = modCities.delCities({id_: req.body.id});
+    let delCity = modCities.delCities({_id: req.body.id});
     console.log(delCity);
     console.log("Yah du kom herind");
 });
