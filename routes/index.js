@@ -43,6 +43,11 @@ router.get('/countries', async function(req, res, next) {
 router.post('/countries', async function(req, res, next) {
     let delCountry = modCountry.delCountries(req.body.id);
     console.log("Yah du kom herind");
+    res.render('country', {
+        scriptLink:'/javascripts/country.js',
+        subtitle: 'The countries',
+        
+    });
 });
 
 
