@@ -40,10 +40,10 @@ router.get('/countries', async function(req, res, next) {
     res.json(countries);
 });
 
-router.post('/countries', function(req, res, next) {
-
+router.post('/countries', async function(req, res, next) {
+    let delCountry = modCountry.delCountries(req.body.id);
     console.log("Yah du kom herind");
- });
+});
 
 
 
@@ -86,17 +86,6 @@ router.get('/lang', async function(req, res, next) {
         scriptLink:'/javascripts/lang.js',
         subtitle: 'The language',
     });
-});
-router.get('/countries/:cont', async function(req, res, next) {
-    let countries = await modCountry.getCountries({continent: req.params.cont}, {sort: {name: 1}});
-    //console.log(countries);
-    res.json(countries);
-});
-router.get('/city/:cont', async function(req, res, next) {
-    let countries = await modCountry.getCountries({continent: req.params.cont}, {sort: {name: 1}});
-    console.log(req.params.cont);
-    //console.log(countries);
-    res.json(countries);
 });
 router.get('/lang/:city', async function(req, res, next) {
     //console.log(req.params.city)

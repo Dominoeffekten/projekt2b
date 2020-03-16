@@ -43,14 +43,14 @@ exports.upsert = async function(url, dbn, obj, query, chk) {
     }
 }
 
-//Sletter efter id - er ikke testet
-exports.remove = async function(url, dbn, obj, id) {
+//Sletter efter name - testet :-)
+exports.remove = async function(url, dbn, obj, name) {
     const constr = `mongodb://${url}:27017/${dbn}`;
     await mongoose.connect(constr, conparam);
     const db = mongoose.connection;
     let stuff = null;
     try {
-        stuff = await obj.removeById(id);
+        stuff = await obj.deleteOne({name: name }, (err) => {});
         console.log("Successful deletion");
     } catch(err) {
         console.log(error);

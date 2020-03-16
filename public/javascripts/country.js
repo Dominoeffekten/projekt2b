@@ -71,7 +71,7 @@ const showCountries = function (e) {
         form.setAttribute("action", "/countries");
 
         let input = document.createElement('input');
-        input.setAttribute("value", country._id);
+        input.setAttribute("value", country.name);
         input.setAttribute("name", "id");
         input.setAttribute("type", "hidden");
 
@@ -81,12 +81,6 @@ const showCountries = function (e) {
         delButton.setAttribute("type", "submit");
         
         //td5.setAttribute("class", "removeButton");
-
-        delButton.addEventListener("click", function () {
-            //var countryId = this.getAttribute("id");
-            //alert("delete country._id: " + countryId);
-            console.log("this button works ... YAY"); 
-        });
 
         td.appendChild(name);
         td1.appendChild(code);
