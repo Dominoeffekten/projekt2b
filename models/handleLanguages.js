@@ -11,6 +11,15 @@ exports.getLanguages = async function (que, sort) {
     }
 }
 
+exports.delLanguage = async function (name) {
+    try {
+        let cs = await mon.remove("localhost", "world", CountryLanguage, name);
+        return cs;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 exports.mergeAndTally = async function (langs, ctrys, ranked) {
     let result = {};
     for (let country of ctrys) {                        // loop through ctrys of chosen continent

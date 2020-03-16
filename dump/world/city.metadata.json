@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"world.city"}],"uuid":"821419f8417b45b6b5001cc64fef6e66"}

@@ -104,19 +104,19 @@ const showLang = function (e) {
         let cc = document.createTextNode("Country code");
     let th4 = document.createElement('th');
         let pop1 = document.createTextNode("Is official");
-    let th7 = document.createElement('th');
-        let speak = document.createTextNode("Percentage");
     let th5 = document.createElement('th');
-        let up = document.createTextNode("Update");
+        let speak = document.createTextNode("Percentage");
     let th6 = document.createElement('th');
+        let up = document.createTextNode("Update");
+    let th7 = document.createElement('th');
         let del = document.createTextNode("Delete");
     
     th1.appendChild(name1);
     th2.appendChild(cc);
     th4.appendChild(pop1);
-    th5.appendChild(up);
-    th6.appendChild(del);
-    th7.appendChild(speak);
+    th5.appendChild(speak);
+    th6.appendChild(up);
+    th7.appendChild(del);
     tabel.appendChild(th1);
     tabel.appendChild(th2);
     tabel.appendChild(th4);
@@ -134,36 +134,44 @@ const showLang = function (e) {
         let td3 = document.createElement('td');
             let pop = document.createTextNode(lang.isofficial);
             td3.setAttribute("id", "official"+lang.percentage);
-        let td6 = document.createElement('td');
-            let speak = document.createTextNode(lang.percentage);
         let td4 = document.createElement('td');
-            let upButton = document.createElement('button');
-            var upText = document.createTextNode("Update"); 
+            let speak = document.createTextNode(lang.percentage);
         let td5 = document.createElement('td');
+            let upButton = document.createElement('button');
+            let delU = document.createElement("I");
+            delU.setAttribute("class", "far fa-edit");
+            upButton.appendChild(delU); 
+        let td6 = document.createElement('td');
             let form = document.createElement('form');
             form.setAttribute("method", "POST");
             form.setAttribute("action", "/lang");
 
             let input = document.createElement('input');
-            input.setAttribute("value", lang._id);
-            input.setAttribute("name", "id");
+            input.setAttribute("value", lang.countrycode);
+            input.setAttribute("name", "cc");
             input.setAttribute("type", "hidden");
+
+            let input1 = document.createElement('input');
+            input1.setAttribute("value", lang.language);
+            input1.setAttribute("name", "lang");
+            input1.setAttribute("type", "hidden");
             
             let delButton = document.createElement('button');
-            var delText = document.createTextNode("Delete"); 
+            let delI = document.createElement("I");
+            delI.setAttribute("class", "fas fa-times");
+            delButton.appendChild(delI);
    
 
         td.appendChild(name);
         td1.appendChild(code);
         td3.appendChild(pop);
-        td6.appendChild(speak);
-        upButton.appendChild(upText);
-        td4.appendChild(upButton);
+        td4.appendChild(speak);
+        td5.appendChild(upButton);
 
-        delButton.appendChild(delText);
         form.appendChild(input);
+        form.appendChild(input1);
         form.appendChild(delButton);
-        td5.appendChild(form);
+        td6.appendChild(form);
         
         tr.appendChild(td);
         tr.appendChild(td1);

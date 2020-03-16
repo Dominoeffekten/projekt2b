@@ -63,8 +63,12 @@ const showCountries = function (e) {
         let td3 = document.createElement('td');
         let pop = document.createTextNode(country.population);
         let td4 = document.createElement('td');
+
         let upButton = document.createElement('button');
-        var upText = document.createTextNode("Update");
+        let delU = document.createElement("I");
+        delU.setAttribute("class", "far fa-edit");
+        upButton.appendChild(delU);
+
         let td5 = document.createElement('td');
         let form = document.createElement('form');
         form.setAttribute("method", "POST");
@@ -76,9 +80,9 @@ const showCountries = function (e) {
         input.setAttribute("type", "hidden");
 
         let delButton = document.createElement('button');
-        var delText = document.createTextNode("Delete");
-        delButton.setAttribute("id", country._id);
-        delButton.setAttribute("type", "submit");
+        let delI = document.createElement("I");
+        delI.setAttribute("class", "fas fa-times");
+        delButton.appendChild(delI); 
         
         //td5.setAttribute("class", "removeButton");
 
@@ -86,9 +90,8 @@ const showCountries = function (e) {
         td1.appendChild(code);
         td2.appendChild(continent);
         td3.appendChild(pop);
-        upButton.appendChild(upText);
         td4.appendChild(upButton);
-        delButton.appendChild(delText);
+        delButton.appendChild(delI);
         form.appendChild(input);
         form.appendChild(delButton);
         td5.appendChild(form);

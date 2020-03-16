@@ -27,17 +27,13 @@ const showGoverment = function (e) {
 
     let th1 = document.createElement('th');
         let name = document.createTextNode("Name");
-    let th5 = document.createElement('th');
-        let up = document.createTextNode("Update");
-    let th6 = document.createElement('th');
+    let th2 = document.createElement('th');
         let del = document.createTextNode("Delete");
 
     th1.appendChild(name);
-    th5.appendChild(up);
-    th6.appendChild(del);
+    th2.appendChild(del);
     tabel.appendChild(th1);
-    tabel.appendChild(th5);
-    tabel.appendChild(th6);
+    tabel.appendChild(th2);
 
     goverments.forEach(function (goverment) {
 
@@ -46,45 +42,29 @@ const showGoverment = function (e) {
         let td = document.createElement('td');
             let name = document.createTextNode(goverment.name);
         
-        let td4 = document.createElement('td');
-            let upButton = document.createElement('button');
-            var upText = document.createTextNode("Update");
-        
-        let td5 = document.createElement('td');
+        let td2 = document.createElement('td');
             let form = document.createElement('form');
             form.setAttribute("method", "POST");
             form.setAttribute("action", "/goverments");
 
         let input = document.createElement('input');
-        input.setAttribute("value", goverment._id);
-        input.setAttribute("name", "id");
+        input.setAttribute("value", goverment.name);
+        input.setAttribute("name", "name");
         input.setAttribute("type", "hidden");
 
         let delButton = document.createElement('button');
-        var delText = document.createTextNode("Delete");
-        delButton.setAttribute("type", "submit");
-        
-        //td5.setAttribute("class", "removeButton");
-
-        delButton.addEventListener("click", function () {
-            //var countryId = this.getAttribute("id");
-            //alert("delete country._id: " + countryId);
-            console.log("this button works ... YAY"); 
-        });
+        let delI = document.createElement("I");
+        delI.setAttribute("class", "fas fa-times");
+        delButton.appendChild(delI);
 
         td.appendChild(name);
         tr.appendChild(td);
 
-        upButton.appendChild(upText);
-        td4.appendChild(upButton);
-        tr.appendChild(td4);
-
-        delButton.appendChild(delText);
+        delButton.appendChild(delI);
         form.appendChild(delButton);
         form.appendChild(input);
-        td5.appendChild(form);
-        tr.appendChild(td5);
-        
+        td2.appendChild(form);
+        tr.appendChild(td2);
         tabel.appendChild(tr);
         
 

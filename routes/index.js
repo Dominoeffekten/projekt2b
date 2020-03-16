@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-//continent
+//continent start
 router.get('/worldview', async function(req, res, next) {
     res.render('worldview', {
         scriptLink:'/javascripts/continent.js',
@@ -25,8 +25,9 @@ router.get('/continents', async function(req, res, next) {
     let continents = await modContinent.getContinents({}, {sort: {name: 1}});
     res.json(continents);
 });
+//continent slut
 
-//country
+//country start
 router.get('/country', async function(req, res, next) {
     res.render('country', {
         scriptLink:'/javascripts/country.js',
@@ -41,7 +42,7 @@ router.get('/countries', async function(req, res, next) {
 });
 
 router.post('/countries', async function(req, res, next) {
-    let delCountry = modCountry.delCountries(req.body.id);
+    let delCountry = modCountry.delCountries({name: req.body.id});
     console.log("Yah du kom herind");
     res.render('country', {
         scriptLink:'/javascripts/country.js',
@@ -49,11 +50,9 @@ router.post('/countries', async function(req, res, next) {
         
     });
 });
+// countries slut
 
-
-
-
-//city
+//city start
 router.get('/city', async function(req, res, next) {
     res.render('city', {
         scriptLink:'/javascripts/citypage.js',
@@ -79,13 +78,17 @@ router.get('/cities/:city', async function(req, res, next) {
 });
 
 router.post('/city', async function(req, res, next) {
-    console.log(req.body.id);
-    let delCity = modCities.delCities({_id: req.body.id});
-    console.log(delCity);
+    console.log(req.body.name);
+    let delCity = modCities.delCities({oldid: req.body.name});
     console.log("Yah du kom herind");
+    res.render('city', {
+        scriptLink:'/javascripts/citypage.js',
+        subtitle: 'The cities'
+    });
 });
+// cities slut
 
-//Lang
+//Lang start
 router.get('/lang', async function(req, res, next) {
     res.render('lang', {
         scriptLink:'/javascripts/lang.js',
@@ -97,19 +100,41 @@ router.get('/lang/:city', async function(req, res, next) {
     let lang = await modLang.getLanguages({countrycode: req.params.city}, {sort: {name: 1}});
     res.json(lang);
 });
+router.post('/lang', async function(req, res, next) {
+    let delLang = modLang.delLanguage({countrycode: req.body.cc, language: req.body.lang});
+    console.log("Yah du kom herind");
+    res.render('lang', {
+        scriptLink:'/javascripts/lang.js',
+        subtitle: 'The Languages',
+        
+    });
+});
+// languages slut
 
-//Lang
+// government start
 router.get('/goverments', async function(req, res, next) {
     res.render('goverments', {
         scriptLink:'/javascripts/gover.js',
-        subtitle: 'The form of goverments',
+        subtitle: 'The form of goverments'
     });
 });
+
 router.get('/gover', async function(req, res, next) {
-    let goverments = await modGover.getGovernmentForms({}, {sort: {name: 1}});
-    //console.log(countries);
-    res.json(goverments);
+    //console.log(req.params.city)
+    let gover = await modGover.getGovernmentForms({}, {sort: {name: 1}});
+    res.json(gover);
 });
+
+router.post('/goverments', async function(req, res, next) {
+    let delGover = modGover.delGover({name: req.body.name});
+    console.log("Yah du kom herind");
+    res.render('goverments', {
+        scriptLink:'/javascripts/gover.js',
+        subtitle: 'The form of goverments'
+    });
+});
+
+// government slut
 
 
 

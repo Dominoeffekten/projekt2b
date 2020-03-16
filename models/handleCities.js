@@ -11,11 +11,9 @@ exports.getCities = async function (que, sort) {
     }
 }
 
-exports.delCities = async function (que, sort, id) {
-    if (sort === null)
-        sort = {sort: {name: 1}};
+exports.delCities = async function (name) {
     try {
-        let cs = await mon.remove("localhost", "world", "city", id);
+        let cs = await mon.remove("localhost", "world", City, name);
         return cs;
     } catch (e) {
         console.log(e);
