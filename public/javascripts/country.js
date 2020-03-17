@@ -22,6 +22,8 @@ import { Ajax } from "./modules/Ajax.js";
      let formular = $("countryForm");
      let forms = document.createElement("form");
      forms.setAttribute("id", "goverment");
+     forms.setAttribute("method", "POST");
+     forms.setAttribute("action", "/country");
 
      let input1 = document.createElement("input");
      input1.setAttribute("name", "code");
@@ -36,11 +38,13 @@ import { Ajax } from "./modules/Ajax.js";
      let continents = JSON.parse(e.target.responseText); //Show continent
      let sel = document.createElement('select');
      sel.setAttribute('id', 'chooseContinent');
+     sel.setAttribute("name", "continent");
 
      continents.forEach(function(continent) {
          let opt = document.createElement('option');
          let opttext = document.createTextNode(continent.name);
          opt.setAttribute("value", continent.name);
+
          opt.appendChild(opttext);
          sel.appendChild(opt);
      });
@@ -101,12 +105,12 @@ import { Ajax } from "./modules/Ajax.js";
 
      let input14 = document.createElement("input");
      input14.setAttribute("name", "capital");
-     input13.setAttribute("placeholder", "capital");
+     input14.setAttribute("placeholder", "capital");
      forms.appendChild(input14);
 
      let input15 = document.createElement("input");
      input15.setAttribute("name", "code2");
-     input13.setAttribute("placeholder", "code2");
+     input15.setAttribute("placeholder", "code2");
      forms.appendChild(input15);
 
      let submitButton = document.createElement("button");
@@ -238,6 +242,7 @@ const showGoverment = function (e) {
     //}
     let gover = JSON.parse(e.target.responseText); //Show continent
     let sel = $('governmentform');
+    sel.setAttribute("name", "governmentform");
 
     gover.forEach(function(gover) {
         let opt = document.createElement('option');
@@ -245,6 +250,7 @@ const showGoverment = function (e) {
         opt.setAttribute("value", gover.name);
         opt.appendChild(opttext);
         sel.appendChild(opt);
+
     });
     $("goverment").appendChild(sel);
 };
