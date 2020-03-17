@@ -5,6 +5,120 @@ import { Ajax } from "./modules/Ajax.js";
 /*
  * Event handler for button - create ajax object and get data
  */
+ const getContinents = function (ev) { //Continents
+     let req = Object.create(Ajax);
+     req.init();
+     req.getFile(`/continents`, showContinents);
+ };
+
+ const showContinents = function (e) {
+     //here you put the ajax response onto your page DOM
+     console.log(e.target.getResponseHeader("Content-Type"));
+     let element = $("countryForm");
+     while (element.firstChild) {
+         element.removeChild(element.firstChild);
+     }
+     //lav en formular
+     let formular = $("countryForm");
+     let forms = document.createElement("form");
+     forms.setAttribute("id", "goverment");
+
+     let input1 = document.createElement("input");
+     input1.setAttribute("name", "code");
+     input1.setAttribute("placeholder", "code");
+     forms.appendChild(input1);
+
+     let input2 = document.createElement("input");
+     input2.setAttribute("name", "name");
+     input2.setAttribute("placeholder", "name");
+     forms.appendChild(input2);
+
+     let continents = JSON.parse(e.target.responseText); //Show continent
+     let sel = document.createElement('select');
+     sel.setAttribute('id', 'chooseContinent');
+
+     continents.forEach(function(continent) {
+         let opt = document.createElement('option');
+         let opttext = document.createTextNode(continent.name);
+         opt.setAttribute("value", continent.name);
+         opt.appendChild(opttext);
+         sel.appendChild(opt);
+     });
+     forms.appendChild(sel);
+
+
+
+     let input4 = document.createElement("input");
+     input4.setAttribute("name", "region");
+     input4.setAttribute("placeholder", "region");
+     forms.appendChild(input4);
+
+     let input5 = document.createElement("input");
+     input5.setAttribute("name", "surfacearea");
+     input5.setAttribute("placeholder", "surfacearea");
+     forms.appendChild(input5);
+
+     let input6 = document.createElement("input");
+     input6.setAttribute("name", "indepyear");
+     input6.setAttribute("placeholder", "indepyear");
+     forms.appendChild(input6);
+
+     let input7 = document.createElement("input");
+     input7.setAttribute("name", "population");
+     input7.setAttribute("placeholder", "population");
+     forms.appendChild(input7);
+
+     let input8 = document.createElement("input");
+     input8.setAttribute("name", "lifeexpectancy");
+     input8.setAttribute("placeholder", "lifeexpectancy");
+     forms.appendChild(input8);
+
+     let input9 = document.createElement("input");
+     input9.setAttribute("name", "gnp");
+     input9.setAttribute("placeholder", "gnp");
+     forms.appendChild(input9);
+
+     let input10 = document.createElement("input");
+     input10.setAttribute("name", "gnpold");
+     input10.setAttribute("placeholder", "gnpold");
+     forms.appendChild(input10);
+
+     let input11 = document.createElement("input");
+     input11.setAttribute("name", "localname");
+     input11.setAttribute("placeholder", "localname");
+     forms.appendChild(input11);
+
+     let input12 = document.createElement("select");
+     input12.setAttribute("id", "governmentform");
+     input12.setAttribute("name", "governmentform");
+     input12.setAttribute("placeholder", "governmentform");
+     forms.appendChild(input12);
+
+     let input13 = document.createElement("input");
+     input13.setAttribute("name", "headofstate");
+     input13.setAttribute("placeholder", "headofstate");
+     forms.appendChild(input13);
+
+     let input14 = document.createElement("input");
+     input14.setAttribute("name", "capital");
+     input13.setAttribute("placeholder", "capital");
+     forms.appendChild(input14);
+
+     let input15 = document.createElement("input");
+     input15.setAttribute("name", "code2");
+     input13.setAttribute("placeholder", "code2");
+     forms.appendChild(input15);
+
+     let submitButton = document.createElement("button");
+     let buttonName = document.createTextNode("Add new country");
+     submitButton.appendChild(buttonName);
+     forms.appendChild(submitButton);
+
+     formular.appendChild(forms);
+
+     getGoverment()
+};
+
 const getCountries = function (ev) { //country
     let req = Object.create(Ajax);
     req.init();
@@ -82,8 +196,8 @@ const showCountries = function (e) {
         let delButton = document.createElement('button');
         let delI = document.createElement("I");
         delI.setAttribute("class", "fas fa-times");
-        delButton.appendChild(delI); 
-        
+        delButton.appendChild(delI);
+
         //td5.setAttribute("class", "removeButton");
 
         td.appendChild(name);
@@ -107,102 +221,40 @@ const showCountries = function (e) {
     div.appendChild(tabel);
     $("countdata").appendChild(div);
     });
+};
 
-    //lav en formular
-    let formular = $("countryForm");
-    let forms = document.createElement("form");
+const getGoverment = function (ev) { //goverment
+    let req = Object.create(Ajax);
+    req.init();
+    req.getFile(`/gover`, showGoverment);
+};
 
-    let input1 = document.createElement("input");
-    input1.setAttribute("name", "code");
-    input1.setAttribute("placeholder", "code");
-    forms.appendChild(input1);
+const showGoverment = function (e) {
+    //here you put the ajax response onto your page DOM
+    console.log(e.target.getResponseHeader("Content-Type"));
+    let element = $("countryForm");
+    //while (element.firstChild) {
+    //    element.removeChild(element.firstChild);
+    //}
+    let gover = JSON.parse(e.target.responseText); //Show continent
+    let sel = $('governmentform');
 
-    let input2 = document.createElement("input");
-    input2.setAttribute("name", "name");
-    input2.setAttribute("placeholder", "name");
-    forms.appendChild(input2);
-
-    let continents = JSON.parse(e.target.responseText); //Show continent
-    let sel = document.createElement('select');
-    sel.setAttribute('id', 'chooseContinent');
-
-    continents.forEach(function(continent) {
+    gover.forEach(function(gover) {
         let opt = document.createElement('option');
-        let opttext = document.createTextNode(continent.name);
-        opt.setAttribute("value", continent.name);
+        let opttext = document.createTextNode(gover.name);
+        opt.setAttribute("value", gover.name);
         opt.appendChild(opttext);
         sel.appendChild(opt);
     });
-    forms.appendChild(sel);
-
-
-
-    let input4 = document.createElement("input");
-    input4.setAttribute("name", "region");
-    input4.setAttribute("placeholder", "region");
-    forms.appendChild(input4);
-
-    let input5 = document.createElement("input");
-    input5.setAttribute("name", "surfacearea");
-    input5.setAttribute("placeholder", "surfacearea");
-    forms.appendChild(input5);
-
-    let input6 = document.createElement("input");
-    input6.setAttribute("name", "indepyear");
-    input6.setAttribute("placeholder", "indepyear");
-    forms.appendChild(input6);
-
-    let input7 = document.createElement("input");
-    input7.setAttribute("name", "population");
-    input7.setAttribute("placeholder", "population");
-    forms.appendChild(input7);
-
-    let input8 = document.createElement("input");
-    input8.setAttribute("name", "lifeexpectancy");
-    input8.setAttribute("placeholder", "lifeexpectancy");
-    forms.appendChild(input8);
-
-    let input9 = document.createElement("input");
-    input9.setAttribute("name", "gnp");
-    input9.setAttribute("placeholder", "gnp");
-    forms.appendChild(input9);
-
-    let input10 = document.createElement("input");
-    input10.setAttribute("name", "gnpold");
-    input10.setAttribute("placeholder", "gnpold");
-    forms.appendChild(input10);
-
-    let input11 = document.createElement("input");
-    input11.setAttribute("name", "localname");
-    input11.setAttribute("placeholder", "localname");
-    forms.appendChild(input11);
-
-    let input12 = document.createElement("input");
-    input12.setAttribute("name", "governmentform");
-    input12.setAttribute("placeholder", "governmentform");
-    forms.appendChild(input12);
-
-    let input13 = document.createElement("input");
-    input13.setAttribute("name", "headofstate");
-    input13.setAttribute("placeholder", "headofstate");
-    forms.appendChild(input13);
-
-    let input14 = document.createElement("input");
-    input14.setAttribute("name", "capital");
-    input13.setAttribute("placeholder", "capital");
-    forms.appendChild(input14);
-
-    let input15 = document.createElement("input");
-    input15.setAttribute("name", "code2");
-    input13.setAttribute("placeholder", "code2");
-    forms.appendChild(input15);
-
-    let submitButton = document.createElement("button");
-    let buttonName = document.createTextNode("Add new country");
-    submitButton.appendChild(buttonName);
-    forms.appendChild(submitButton);
-
-    formular.appendChild(forms);
-
+    $("goverment").appendChild(sel);
 };
-window.addEventListener("load", getCountries);
+
+
+
+let initialize = function () {
+  getCountries();
+  getContinents();
+
+}
+
+window.addEventListener("load", initialize);
