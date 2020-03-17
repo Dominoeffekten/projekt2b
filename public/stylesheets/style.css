@@ -1,6 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+* {
+    box-sizing: border-box;
+}
 header {
     text-align: right;
     width: 100%;
@@ -33,11 +36,43 @@ th, td {
     text-align: right;
 }
 #countryForm {
+    width:50%;
     display: flex;
     justify-content: space-between;
+    padding:20px;
 }
 
 #countryForm input {
-    width:40%;
+    width:30%;
     margin:5px;
+    padding:5px;
+}
+
+#countryForm select {
+    width:30%;
+    margin:5px;
+    padding:5px;
+}
+#submitButton {
+    display:block;
+    width:50%;
+    margin:15px auto;
+    font-size:18px;
+}
+
+#goverment {
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+.upButton, .delButton {
+    background-color:transparent;
+    width:100%;
+    height:100%;
+    font-size:25px;
+    margin:0;
+    padding:0;
+    display:block;
+    border:none;
 }

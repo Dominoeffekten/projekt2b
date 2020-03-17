@@ -113,11 +113,6 @@ import { Ajax } from "./modules/Ajax.js";
      input15.setAttribute("placeholder", "code2");
      forms.appendChild(input15);
 
-     let submitButton = document.createElement("button");
-     let buttonName = document.createTextNode("Add new country");
-     submitButton.appendChild(buttonName);
-     forms.appendChild(submitButton);
-
      formular.appendChild(forms);
 
      getGoverment()
@@ -180,9 +175,19 @@ const showCountries = function (e) {
         let continent = document.createTextNode(country.continent);
         let td3 = document.createElement('td');
         let pop = document.createTextNode(country.population);
+        
         let td4 = document.createElement('td');
+        let form1 = document.createElement('form');
+        form1.setAttribute("method", "POST");
+        form1.setAttribute("action", "/countries");
+
+        let input1 = document.createElement('input');
+        input1.setAttribute("value", country.name);
+        input1.setAttribute("name", "id");
+        input1.setAttribute("type", "hidden");
 
         let upButton = document.createElement('button');
+        upButton.setAttribute("class", "upButton");
         let delU = document.createElement("I");
         delU.setAttribute("class", "far fa-edit");
         upButton.appendChild(delU);
@@ -198,6 +203,7 @@ const showCountries = function (e) {
         input.setAttribute("type", "hidden");
 
         let delButton = document.createElement('button');
+        delButton.setAttribute("class", "delButton");
         let delI = document.createElement("I");
         delI.setAttribute("class", "fas fa-times");
         delButton.appendChild(delI);
@@ -208,8 +214,9 @@ const showCountries = function (e) {
         td1.appendChild(code);
         td2.appendChild(continent);
         td3.appendChild(pop);
-        td4.appendChild(upButton);
-        delButton.appendChild(delI);
+        form1.appendChild(input1);
+        form1.appendChild(upButton);
+        td4.appendChild(form1);
         form.appendChild(input);
         form.appendChild(delButton);
         td5.appendChild(form);
@@ -253,6 +260,11 @@ const showGoverment = function (e) {
 
     });
     $("goverment").appendChild(sel);
+    let submitButton = document.createElement("button");
+    let buttonName = document.createTextNode("Add new country");
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.appendChild(buttonName);
+    $("goverment").appendChild(submitButton);
 };
 
 
@@ -260,7 +272,6 @@ const showGoverment = function (e) {
 let initialize = function () {
   getCountries();
   getContinents();
-
 }
 
 window.addEventListener("load", initialize);

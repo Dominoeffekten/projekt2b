@@ -53,6 +53,7 @@ const showGoverment = function (e) {
         input.setAttribute("type", "hidden");
 
         let delButton = document.createElement('button');
+        delButton.setAttribute("class", "delButton");
         let delI = document.createElement("I");
         delI.setAttribute("class", "fas fa-times");
         delButton.appendChild(delI);

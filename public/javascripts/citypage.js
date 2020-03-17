@@ -131,6 +131,7 @@ const showCities = function (e) {
             let pop = document.createTextNode(city.population);
         let td4 = document.createElement('td');
             let upButton = document.createElement('button');
+            upButton.setAttribute("class", "upButton");
             let delU = document.createElement("I");
             delU.setAttribute("class", "far fa-edit");
             upButton.appendChild(delU); 
@@ -145,6 +146,7 @@ const showCities = function (e) {
             input.setAttribute("type", "hidden");
             
             let delButton = document.createElement('button');
+            delButton.setAttribute("class", "delButton");
             let delI = document.createElement("I");
             delI.setAttribute("class", "fas fa-times");
             delButton.appendChild(delI); 

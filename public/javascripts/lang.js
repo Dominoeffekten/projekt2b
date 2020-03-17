@@ -138,6 +138,7 @@ const showLang = function (e) {
             let speak = document.createTextNode(lang.percentage);
         let td5 = document.createElement('td');
             let upButton = document.createElement('button');
+            upButton.setAttribute("class", "upButton");
             let delU = document.createElement("I");
             delU.setAttribute("class", "far fa-edit");
             upButton.appendChild(delU); 
@@ -157,6 +158,7 @@ const showLang = function (e) {
             input1.setAttribute("type", "hidden");
             
             let delButton = document.createElement('button');
+            delButton.setAttribute("class", "delButton")
             let delI = document.createElement("I");
             delI.setAttribute("class", "fas fa-times");
             delButton.appendChild(delI);
