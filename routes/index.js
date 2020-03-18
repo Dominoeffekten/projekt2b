@@ -36,7 +36,6 @@ router.get('/country', async function(req, res, next) {// load country site
 });
 router.post('/country', async function(req, res, next) {// add new country
     let postCountry = modCountry.postCountry(req);
-    console.log(req.body);
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',
@@ -50,6 +49,14 @@ router.get('/countries', async function(req, res, next) { // loads the db conten
 router.post('/countries', async function(req, res, next) { // deletes country from db
     let delCountry = modCountry.delCountries({name: req.body.id});
     console.log("Yah du kom herind");
+    res.render('country', {
+        scriptLink:'/javascripts/country.js',
+        subtitle: 'The countries',
+    });
+});
+router.post('/countryRead', async function(req, res, next) { // deletes country from db 
+    let countries = await modCountry.getCountries({name: req.body.name}, {sort: {continent: 1}});
+    res.json(countries);
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',

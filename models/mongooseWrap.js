@@ -34,7 +34,10 @@ exports.upsert = async function(url, dbn, obj, query, chk) {
     const db = mongoose.connection;
     let stuff = null;
     try {
-        stuff = await obj.findOneAndUpdate(chk, {"$set": query}, {upsert: true});
+        stuff = await obj.updateOne(chk, query, {
+            upsert: true,
+            new: true
+        });
     } catch(err) {
         console.log(error);
     } finally {
