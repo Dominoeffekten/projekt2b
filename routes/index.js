@@ -36,6 +36,7 @@ router.get('/country', async function(req, res, next) {// load country site
 });
 router.post('/country', async function(req, res, next) {// add new country
     let postCountry = modCountry.postCountry(req);
+    console.log(req.body);
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',
