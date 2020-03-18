@@ -4,8 +4,7 @@ const modContinent = require("../models/handleContinents");
 const modCountry = require("../models/handleCountries");
 const modCities = require("../models/handleCities"); 
 const modLang = require("../models/handleLanguages"); 
-const modGover = require("../models/handleGovernmentForms"); 
-
+const modGover = require("../models/handleGovernmentForms");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -54,14 +53,13 @@ router.post('/countries', async function(req, res, next) { // deletes country fr
         subtitle: 'The countries',
     });
 });
-router.post('/countryRead', async function(req, res, next) { 
-    let countries = await modCountry.getCountries({name: req.body.name}, {sort: {continent: 1}});
-    res.json(countries);
-    /*
-    res.render('country', {
-        scriptLink:'/javascripts/country.js',
-        subtitle: 'The countries',
-    });*/
+router.post('/countryRead', async function(req, res, next) {
+    let result = await modCountry.getCountries({name: req.body.name}, {sort: {continent: 1}});
+    console.log(result);
+    res.render('countryData', {
+        title: "You are about to edit selected country: " + req.body.name,
+        country: result
+    });
 });
 // countries slut
 

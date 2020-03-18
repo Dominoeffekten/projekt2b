@@ -3,70 +3,68 @@ extends layout
 block content
     h1= title
     h2= subtitle
-    main
-        form(id='countryEnterForm' action='/countryData' method='post')
+
+        form(id='countryEnterForm' action='/country' method='post')
             table
                 tr
                     td.col_l Country Name
                     td
-                        input(type='text' name='name' placeholder='name of country' required)
+                        input(type='text' name='name' value=`${country[0].name}` placeholder='name of country' required)
                 tr
                     td.col_l Local Country Name
                     td
-                        input(type='text' name='localname' placeholder='localname of country')
+                        input(type='text' name='localname' value=`${country[0].localname}` placeholder='localname of country')
                 tr
                     td.col_l Countrycode
                     td
-                        input(type='text' name='code' placeholder='countrycode 3 char' required)
+                        input(type='text' name='code' value=`${country[0].code}` placeholder='countrycode 3 char' required)
                 tr
                     td.col_l Continent
                     td
                         select(name='continent')
-                            each continent in continents
-                                option #{continent.name}
+                            option #{country[0].continent}
                 tr
                     td.col_l Region
                     td
-                        input(type='text' name='region' placeholder='name of region of continent' required)
+                        input(type='text' name='region' value=`${country[0].region}` placeholder='name of region of continent' required)
                 tr
                     td.col_l Area in sq km
                     td
-                        input(type='text' name='surfacearea' placeholder='area in sq km' required)
+                        input(type='text' name='surfacearea' value=`${country[0].surfacearea}` placeholder='area in sq km' required)
                 tr
                     td.col_l Year of Independence
                     td
-                        input(type='text' name='indepyear' placeholder='year of independence' required)
+                        input(type='text' name='indepyear' value=`${country[0].indepyear}` placeholder='year of independence' required)
                 tr
                     td.col_l Population
                     td
-                        input(type='text' name='population' placeholder='population' required)
+                        input(type='text' name='population' value=`${country[0].population}` placeholder='population' required)
                 tr
                     td.col_l Life Expectency
                     td
-                        input(type='text' name='lifeexpectancy' placeholder='life expectancy' required)
+                        input(type='text' name='lifeexpectancy' value=`${country[0].lifeexpectancy}` placeholder='life expectancy' required)
                 tr
                     td.col_l GNP
                     td
-                        input(type='text' name='gnp' placeholder='GNP in billions' required)
+                        input(type='text' name='gnp' value=`${country[0].gnp}` placeholder='GNP in billions' required)
                 tr
                     td.col_l Prev GNP
                     td
-                        input(type='text' name='gnpold' placeholder='Previous GNP' required)
+                        input(type='text' name='gnpold' value=`${country[0].gnpold}` placeholder='Previous GNP' required)
                 tr
                     td.col_l Government Form
                     td
                         select(name='governmentform')
-                            each governmentform in governmentforms
-                                option #{governmentform.name}
+                                option #{country[0].governmentform}
                 tr
                     td.col_l Head of State
                     td
-                        input(type='text' name='headofstate' placeholder='Who\'s the boss' required)
+                        input(type='text' name='headofstate' value=`${country[0].headofstate}` placeholder='Who\'s the boss' required)
                 tr
                     td.col_l Short Countrycode
                     td
-                        input(type='text' name='code2' placeholder='countrycode 2 char' required)
+                        input(type='text' name='code2' value=`${country[0].code2}` placeholder='countrycode 2 char' required)
                 tr
                     td
                     td
-                        input(type='submit' value='Go' id='Go')
+                        input(type='submit' value='Update country' id='Go')
