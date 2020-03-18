@@ -15,16 +15,24 @@ header nav ul {
     text-align: right;
 }
 header nav ul li {
-    border: 1px solid gray;
     display: inline;
     margin-right: 5px;
     padding: 3px;
 }
+header nav ul li a{
+    text-decoration: none;
+    color: black;
+}
 main {
     padding: 1em;
 }
+table{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 15px;
+}
 th, td {
-    outline: 1px solid blue;
+    outline: 1px solid #696969;
     padding: 14px;
     margin: 10px;
 }
@@ -40,32 +48,37 @@ th, td {
     display: flex;
     justify-content: space-between;
     padding:20px;
+    margin: 0 auto;
 }
-
+input{
+    font-size: 14px;
+}
 #countryForm input {
     width:30%;
     margin:5px;
     padding:5px;
 }
-
-#countryForm select {
+input[type=text], select {
     width:30%;
     margin:5px;
     padding:5px;
-}
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
 #submitButton {
     display:block;
     width:50%;
     margin:15px auto;
     font-size:18px;
 }
-
 #goverment {
     display:flex;
     justify-content: space-between;
     flex-wrap:wrap;
 }
-
 .upButton, .delButton {
     background-color:transparent;
     width:100%;
@@ -75,4 +88,7 @@ th, td {
     padding:0;
     display:block;
     border:none;
+}
+#citydata, #langdata{
+    margin-top: 25px;
 }

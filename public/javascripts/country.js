@@ -25,20 +25,23 @@ import { Ajax } from "./modules/Ajax.js";
      forms.setAttribute("method", "POST");
      forms.setAttribute("action", "/country");
 
-     let input1 = document.createElement("input");
-     input1.setAttribute("name", "code");
-     input1.setAttribute("placeholder", "code");
-     forms.appendChild(input1);
-
      let input2 = document.createElement("input");
      input2.setAttribute("name", "name");
-     input2.setAttribute("placeholder", "name");
+     input2.setAttribute("type", "text");
+     input2.setAttribute("placeholder", "Name");
      forms.appendChild(input2);
+
+     let input1 = document.createElement("input");
+     input1.setAttribute("name", "code");
+     input1.setAttribute("type", "text");
+     input1.setAttribute("placeholder", "Three cifre code");
+     forms.appendChild(input1);
+
 
      let continents = JSON.parse(e.target.responseText); //Show continent
      let sel = document.createElement('select');
      sel.setAttribute('id', 'chooseContinent');
-     sel.setAttribute("name", "continent");
+     sel.setAttribute("name", "Continent");
 
      continents.forEach(function(continent) {
          let opt = document.createElement('option');
@@ -54,63 +57,75 @@ import { Ajax } from "./modules/Ajax.js";
 
      let input4 = document.createElement("input");
      input4.setAttribute("name", "region");
-     input4.setAttribute("placeholder", "region");
+     input4.setAttribute("type", "text");
+     input4.setAttribute("placeholder", "Region");
      forms.appendChild(input4);
 
      let input5 = document.createElement("input");
      input5.setAttribute("name", "surfacearea");
-     input5.setAttribute("placeholder", "surfacearea");
+     input5.setAttribute("type", "number");
+     input5.setAttribute("placeholder", "Surfacearea");
      forms.appendChild(input5);
 
      let input6 = document.createElement("input");
      input6.setAttribute("name", "indepyear");
-     input6.setAttribute("placeholder", "indepyear");
+     input6.setAttribute("type", "number");
+     input6.setAttribute("placeholder", "Indepyear");
      forms.appendChild(input6);
 
      let input7 = document.createElement("input");
      input7.setAttribute("name", "population");
-     input7.setAttribute("placeholder", "population");
+     input7.setAttribute("type", "number");
+     input7.setAttribute("placeholder", "Population");
      forms.appendChild(input7);
 
      let input8 = document.createElement("input");
      input8.setAttribute("name", "lifeexpectancy");
-     input8.setAttribute("placeholder", "lifeexpectancy");
+     input8.setAttribute("type", "number");
+     input8.setAttribute("placeholder", "Lifeexpectancy");
      forms.appendChild(input8);
 
      let input9 = document.createElement("input");
      input9.setAttribute("name", "gnp");
-     input9.setAttribute("placeholder", "gnp");
+     input9.setAttribute("type", "number");
+     input9.setAttribute("placeholder", "GNP");
      forms.appendChild(input9);
 
      let input10 = document.createElement("input");
      input10.setAttribute("name", "gnpold");
-     input10.setAttribute("placeholder", "gnpold");
+     input10.setAttribute("type", "number");
+     input10.setAttribute("placeholder", "Old GNP");
      forms.appendChild(input10);
 
      let input11 = document.createElement("input");
      input11.setAttribute("name", "localname");
-     input11.setAttribute("placeholder", "localname");
+     input11.setAttribute("type", "text");
+     input11.setAttribute("placeholder", "Localname");
      forms.appendChild(input11);
 
      let input12 = document.createElement("select");
      input12.setAttribute("id", "governmentform");
+     input12.setAttribute("type", "text");
      input12.setAttribute("name", "governmentform");
-     input12.setAttribute("placeholder", "governmentform");
+     input12.setAttribute("placeholder", "Government form");
      forms.appendChild(input12);
 
      let input13 = document.createElement("input");
      input13.setAttribute("name", "headofstate");
-     input13.setAttribute("placeholder", "headofstate");
+     input13.setAttribute("type", "text");
+     input13.setAttribute("placeholder", "Head of state");
      forms.appendChild(input13);
 
      let input14 = document.createElement("input");
      input14.setAttribute("name", "capital");
-     input14.setAttribute("placeholder", "capital");
+     input14.setAttribute("type", "text");
+     input14.setAttribute("placeholder", "Capital");
      forms.appendChild(input14);
 
      let input15 = document.createElement("input");
      input15.setAttribute("name", "code2");
-     input15.setAttribute("placeholder", "code2");
+     input15.setAttribute("type", "text");
+     input15.setAttribute("placeholder", "Two cifre code");
      forms.appendChild(input15);
 
      formular.appendChild(forms);
