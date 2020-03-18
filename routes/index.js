@@ -54,13 +54,14 @@ router.post('/countries', async function(req, res, next) { // deletes country fr
         subtitle: 'The countries',
     });
 });
-router.post('/countryRead', async function(req, res, next) { // deletes country from db 
+router.post('/countryRead', async function(req, res, next) { 
     let countries = await modCountry.getCountries({name: req.body.name}, {sort: {continent: 1}});
     res.json(countries);
+    /*
     res.render('country', {
         scriptLink:'/javascripts/country.js',
         subtitle: 'The countries',
-    });
+    });*/
 });
 // countries slut
 

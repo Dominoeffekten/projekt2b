@@ -11,6 +11,17 @@ import { Ajax } from "./modules/Ajax.js";
      req.getFile(`/continents`, showContinents);
  };
 
+ const getCountries = function (ev) { //country
+    let req = Object.create(Ajax);
+    req.init();
+    req.getFile(`/countries`, showCountries);
+};
+const getGoverment = function (ev) { //goverment
+    let req = Object.create(Ajax);
+    req.init();
+    req.getFile(`/gover`, showGoverment);
+};
+
  const showContinents = function (e) {
      //here you put the ajax response onto your page DOM
      console.log(e.target.getResponseHeader("Content-Type"));
@@ -146,12 +157,6 @@ import { Ajax } from "./modules/Ajax.js";
      getGoverment()
 };
 
-const getCountries = function (ev) { //country
-    let req = Object.create(Ajax);
-    req.init();
-    req.getFile(`/countries`, showCountries);
-};
-
 const showCountries = function (e) {
     //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
@@ -204,10 +209,12 @@ const showCountries = function (e) {
         let td3 = document.createElement('td');
         let pop = document.createTextNode(country.population);
         
+        //update
         let td4 = document.createElement('td');
         let form1 = document.createElement('form');
         form1.setAttribute("method", "POST");
         form1.setAttribute("action", "/countryRead");
+        form1.addEventListener('click', readCountry);
 
         let input1 = document.createElement('input');
         input1.setAttribute("value", country.name);
@@ -262,11 +269,7 @@ const showCountries = function (e) {
     });
 };
 
-const getGoverment = function (ev) { //goverment
-    let req = Object.create(Ajax);
-    req.init();
-    req.getFile(`/gover`, showGoverment);
-};
+
 
 const showGoverment = function (e) {
     //here you put the ajax response onto your page DOM
@@ -304,7 +307,7 @@ const showGoverment = function (e) {
  const showCountry = function (e) {
     console.log(e.target.getResponseHeader("Content-Type"));
     let country = JSON.parse(e.target.responseText);
-    console.log(country.name);
+    console.log(country);
  }
 
 
@@ -312,7 +315,6 @@ const showGoverment = function (e) {
 let initialize = function () {
   getCountries();
   getContinents();
-  readCountry();
 }
 
 window.addEventListener("load", initialize);
