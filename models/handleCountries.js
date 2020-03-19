@@ -39,7 +39,7 @@ exports.postCountry = async function (req) {
         localname: req.body.localname,
         governmentform: req.body.governmentform,
         headofstate: req.body.headofstate,
-        capital: null,
+        capital: 0,
         code2: req.body.code2
     });
     if (req.body.localname === "") country.localname = country.name;
