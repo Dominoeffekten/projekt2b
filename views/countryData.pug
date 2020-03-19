@@ -21,8 +21,12 @@ block content
                 tr
                     td.col_l Continent
                     td
-                        select(name='continent')
-                            option #{country[0].continent}
+                        select(name='continent' value=`${country[0].continent}`)
+                            each continent in cont
+                                if country[0].continent === continent.name
+                                    option(selected="selected") #{continent.name}
+                                else
+                                    option #{continent.name}
                 tr
                     td.col_l Region
                     td
@@ -54,8 +58,12 @@ block content
                 tr
                     td.col_l Government Form
                     td
-                        select(name='governmentform')
-                                option #{country[0].governmentform}
+                        select(name='governmentform' value=`${country[0].governmentform}`)
+                                each form in gov
+                                    if country[0].governmentform === form.name
+                                        option(selected="selected") #{form.name}
+                                    else
+                                        option #{form.name}
                 tr
                     td.col_l Head of State
                     td

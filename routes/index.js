@@ -55,10 +55,14 @@ router.post('/countries', async function(req, res, next) { // deletes country fr
 });
 router.post('/countryRead', async function(req, res, next) {
     let result = await modCountry.getCountries({name: req.body.name}, {sort: {continent: 1}});
+    let continent = await modContinent.getContinents({}, {sort: {continent: 1}});
+    let governmentform = await modGover.getGovernmentForms({}, {sort: {continent: 1}});
     console.log(result);
     res.render('countryData', {
         title: "You are about to edit selected country: " + req.body.name,
-        country: result
+        country: result,
+        cont: continent,
+        gov: governmentform
     });
 });
 // countries slut
