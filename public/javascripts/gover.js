@@ -71,14 +71,37 @@ const showGoverment = function (e) {
 
 
     });
-
     div.appendChild(tabel);
+    makeForm();
     $("goverdata").appendChild(div);
-
-
-
-
-
-
 };
+
+const makeForm = function(e){
+    //here you put the ajax response onto your page DOM
+     
+    // lav en formular
+
+    let formularGover = $("goverForm")
+    let goverForms = document.createElement("form");
+    goverForms.setAttribute("id", "gover");
+    goverForms.setAttribute("method", "POST");
+    goverForms.setAttribute("action", "/goverments");
+
+    let goverinput2 = document.createElement("input");
+    goverinput2.setAttribute("name", "name");
+    goverinput2.setAttribute("id", "name");
+    goverinput2.setAttribute("type", "text");
+    goverinput2.setAttribute("placeholder", "Name");
+    goverForms.appendChild(goverinput2);
+
+    let submitButton = document.createElement("button");
+    let buttonName = document.createTextNode("Add a government form");
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.appendChild(buttonName);
+    goverForms.appendChild(submitButton);
+
+    formularGover.appendChild(goverForms);
+    // formular end
+}
+
 window.addEventListener("load", getGoverment);
