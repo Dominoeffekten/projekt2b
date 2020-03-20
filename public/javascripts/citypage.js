@@ -63,47 +63,7 @@ const showCountries = function (e) {
         element.removeChild(element.firstChild);
     }
 
-    // lav en formular
-    let formularCity = $("city")
-    let ctyForms = document.createElement("form");
-    ctyForms.setAttribute("id", "city");
-    ctyForms.setAttribute("method", "POST");
-    ctyForms.setAttribute("action", "/citypage");
-
-    let cyinput2 = document.createElement("input");
-    cyinput2.setAttribute("name", "name");
-    cyinput2.setAttribute("id", "name");
-    cyinput2.setAttribute("type", "text");
-    cyinput2.setAttribute("placeholder", "Name");
-    ctyForms.appendChild(cyinput2);
-
-    let cyinput1 = document.createElement("input");
-    cyinput1.setAttribute("name", "countrycode");
-    cyinput1.setAttribute("id", "countrycode");
-    cyinput1.setAttribute("type", "text");
-    cyinput1.setAttribute("placeholder", "Three cifre code");
-    ctyForms.appendChild(cyinput1);
-
-    let cyinput3 = document.createElement("input");
-    cyinput3.setAttribute("name", "district");
-    cyinput3.setAttribute("id", "district");
-    cyinput3.setAttribute("type", "text");
-    cyinput3.setAttribute("placeholder", "district");
-    ctyForms.appendChild(cyinput3);
-
-    let cyinput4 = document.createElement("input");
-    cyinput4.setAttribute("name", "population");
-    cyinput4.setAttribute("id", "population");
-    cyinput4.setAttribute("type", "text");
-    cyinput4.setAttribute("placeholder", "population");
-    ctyForms.appendChild(cyinput4);
-
-    formularCity.appendChild(ctyForms);
-
-
-
-    // formular end
-
+    
     let div = document.createElement("div");
     let h3 = document.createElement('h3');
     let txt = document.createTextNode('Choose a country');
@@ -214,7 +174,56 @@ const showCities = function (e) {
 
     div.appendChild(tabel);
     $("citydata").appendChild(div);
+    makeForm();
 };
 
+const makeForm = function(e){
+    //here you put the ajax response onto your page DOM
+     
+    // lav en formular
+
+    let formularCity = $("cityForm")
+    let ctyForms = document.createElement("form");
+    ctyForms.setAttribute("id", "city");
+    ctyForms.setAttribute("method", "POST");
+    ctyForms.setAttribute("action", "/citypage");
+
+    let cyinput2 = document.createElement("input");
+    cyinput2.setAttribute("name", "name");
+    cyinput2.setAttribute("id", "name");
+    cyinput2.setAttribute("type", "text");
+    cyinput2.setAttribute("placeholder", "Name");
+    ctyForms.appendChild(cyinput2);
+
+    let cyinput1 = document.createElement("input");
+    cyinput1.setAttribute("name", "countrycode");
+    cyinput1.setAttribute("id", "countrycode");
+    cyinput1.setAttribute("type", "text");
+    cyinput1.setAttribute("placeholder", "Three cifre code");
+    ctyForms.appendChild(cyinput1);
+
+    let cyinput3 = document.createElement("input");
+    cyinput3.setAttribute("name", "district");
+    cyinput3.setAttribute("id", "district");
+    cyinput3.setAttribute("type", "text");
+    cyinput3.setAttribute("placeholder", "district");
+    ctyForms.appendChild(cyinput3);
+
+    let cyinput4 = document.createElement("input");
+    cyinput4.setAttribute("name", "population");
+    cyinput4.setAttribute("id", "population");
+    cyinput4.setAttribute("type", "text");
+    cyinput4.setAttribute("placeholder", "population");
+    ctyForms.appendChild(cyinput4);
+
+    let submitButton = document.createElement("button");
+    let buttonName = document.createTextNode("Add new city");
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.appendChild(buttonName);
+    ctyForms.appendChild(submitButton);
+
+    formularCity.appendChild(ctyForms);
+    // formular end
+}
 
 window.addEventListener("load", getContinents);                   // kick off JS
