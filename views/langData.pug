@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+
+        form(id='langEnterForm' action='/lang' method='POST')
+            table
+                tr
+                    td.col_l Country code
+                    td
+                        select(name='country' value=`${lang[0].countrycode}`)
+                            each country in count
+                                if lang[0].countrycode === country.code
+                                    option(selected="selected") #{country.code}
+                                else
+                                    option #{country.name}
+                tr
+                    td.col_l Language
+                    td
+                        input(type='text' name='language' value=`${lang[0].language}` placeholder='Language' required)
+                tr
+                    td.col_l Is official
+                    td
+                        input(type='text' name='isofficial' value=`${lang[0].isofficial}` placeholder='T or F' required)
+                tr
+                    td.col_l Percentage
+                    td
+                        input(type='number' name='percentage' value=`${lang[0].percentage}` placeholder='Percentage')
+                tr
+                    td
+                    td
+                        input(type='submit' value='Update language' id='Go')

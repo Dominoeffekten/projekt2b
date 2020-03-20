@@ -122,6 +122,18 @@ router.post('/lang', async function(req, res, next) {  // deletes country from d
         
     });
 });
+router.post('/langRead', async function(req, res, next) {
+    console.log(req.body)
+    let result = await modLang.getLanguages({name: req.body.countrycode}, {sort: {continent: 1}});
+    let countries = await modCountry.getCountries({}, {sort: {name: 1}});
+
+    console.log(result);
+    res.render('langData', {
+        title: "You are about to edit selected language: " + req.body.name,
+        lang: result,
+        count: countries,
+    });
+});
 // languages slut
 
 // government start

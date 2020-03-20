@@ -20,6 +20,23 @@ exports.delLanguage = async function (name) {
     }
 }
 
+exports.postLanguages = async function (req) {
+    let chk = { countrycode: req.body.code, language: req.body.name };  // check object for existence
+    let languages = new Countrylanguage({                     // create obejct in db-format
+        countrycode: req.body.code,
+        language: req.body.name,
+        isofficial: req.body.continent,
+        percentage: req.body.region,
+    });
+    try {
+        let cs = await mon.upsert("localhost", "world", CountryLanguage, languages, chk);
+        return;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
 exports.mergeAndTally = async function (langs, ctrys, ranked) {
     let result = {};
     for (let country of ctrys) {                        // loop through ctrys of chosen continent

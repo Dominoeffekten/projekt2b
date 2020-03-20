@@ -20,6 +20,18 @@ const getLang = function(ev) {
     req.init();
     req.getFile(`/lang/${ev.target.value}`, showLang);
 };
+
+const readLang = function (ev) { //Continents
+    let req = Object.create(Ajax);
+    req.init();
+    req.getFile(`/langRead`, showReadLang);
+};
+
+const showReadLang = function (e) {
+    console.log(e.target.getResponseHeader("Content-Type"));
+    let country = JSON.parse(e.target.responseText);
+    console.log(country);
+ }
 /*
  * callback function for the above AJaX
  */
@@ -128,59 +140,77 @@ const showLang = function (e) {
         
         let tr = document.createElement('tr');
         let td = document.createElement('td');
-            let name = document.createTextNode(lang.language);
-        let td1 = document.createElement('td');
-            let code = document.createTextNode(lang.countrycode);
-        let td3 = document.createElement('td');
-            let pop = document.createTextNode(lang.isofficial);
-            td3.setAttribute("id", "official"+lang.percentage);
-        let td4 = document.createElement('td');
-            let speak = document.createTextNode(lang.percentage);
-        let td5 = document.createElement('td');
-            let upButton = document.createElement('button');
-            upButton.setAttribute("class", "upButton");
-            let delU = document.createElement("I");
-            delU.setAttribute("class", "far fa-edit");
-            upButton.appendChild(delU); 
-        let td6 = document.createElement('td');
-            let form = document.createElement('form');
-            form.setAttribute("method", "POST");
-            form.setAttribute("action", "/lang");
-
-            let input = document.createElement('input');
-            input.setAttribute("value", lang.countrycode);
-            input.setAttribute("name", "cc");
-            input.setAttribute("type", "hidden");
-
-            let input1 = document.createElement('input');
-            input1.setAttribute("value", lang.language);
-            input1.setAttribute("name", "lang");
-            input1.setAttribute("type", "hidden");
-            
-            let delButton = document.createElement('button');
-            delButton.setAttribute("class", "delButton")
-            let delI = document.createElement("I");
-            delI.setAttribute("class", "fas fa-times");
-            delButton.appendChild(delI);
-   
-
+        let name = document.createTextNode(lang.language);
         td.appendChild(name);
-        td1.appendChild(code);
-        td3.appendChild(pop);
-        td4.appendChild(speak);
-        td5.appendChild(upButton);
-
-        form.appendChild(input);
-        form.appendChild(input1);
-        form.appendChild(delButton);
-        td6.appendChild(form);
-        
         tr.appendChild(td);
+
+        let td1 = document.createElement('td');
+        let code = document.createTextNode(lang.countrycode);
+        td1.appendChild(code);
         tr.appendChild(td1);
+
+        let td3 = document.createElement('td');
+        let pop = document.createTextNode(lang.isofficial);
+        td3.setAttribute("id", "official"+lang.percentage);
+        td3.appendChild(pop);
         tr.appendChild(td3);
+
+        let td4 = document.createElement('td');
+        let speak = document.createTextNode(lang.percentage);
+        td4.appendChild(speak);
         tr.appendChild(td4);
+
+        //update
+
+
+
+        let td5 = document.createElement('td');
+        let upForm = document.createElement('form');
+        upForm.setAttribute("method", "POST");
+        upForm.setAttribute("action", "/langRead");
+        upForm.addEventListener('click', readLang);
+
+        let inputUp = document.createElement('input');
+        inputUp.setAttribute("value", lang.countrycode);
+        inputUp.setAttribute("name", "countrycode");
+        inputUp.setAttribute("type", "hidden");
+        upForm.appendChild(inputUp);
+
+        let upButton = document.createElement('button');
+        upButton.setAttribute("class", "upButton");
+        let delU = document.createElement("I");
+        delU.setAttribute("class", "far fa-edit");
+        upButton.appendChild(delU);
+        upForm.appendChild(upButton);
+        td5.appendChild(upForm);
         tr.appendChild(td5);
+
+        let td6 = document.createElement('td');
+        let form = document.createElement('form');
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "/lang");
+        td6.appendChild(form);
         tr.appendChild(td6);
+
+        let input = document.createElement('input');
+        input.setAttribute("value", lang.countrycode);
+        input.setAttribute("name", "cc");
+        input.setAttribute("type", "hidden");
+        form.appendChild(input);
+
+        let input1 = document.createElement('input');
+        input1.setAttribute("value", lang.language);
+        input1.setAttribute("name", "lang");
+        input1.setAttribute("type", "hidden");
+        form.appendChild(input1);
+        
+        let delButton = document.createElement('button');
+        delButton.setAttribute("class", "delButton")
+        let delI = document.createElement("I");
+        delI.setAttribute("class", "fas fa-times");
+        delButton.appendChild(delI);
+        form.appendChild(delButton);
+        
         tabel.appendChild(tr);
     });
 
