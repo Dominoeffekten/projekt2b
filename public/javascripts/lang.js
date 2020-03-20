@@ -6,6 +6,7 @@ import {Ajax} from "./modules/Ajax.js";
  * Event handler for button - create ajax object and get data
  */
 const getContinents = function(ev) {
+    makeForm();
     let req = Object.create(Ajax);
     req.init();
     req.getFile("/continents", showContinents);
@@ -67,7 +68,17 @@ const showContinents = function(e) {
 }
 
 const showCountries = function (e) {
-    
+    let countries = JSON.parse(e.target.responseText);
+    let selector = $("countrycode");
+    countries.forEach(function(country) {
+        let opt = document.createElement('option');
+        let opttext = document.createTextNode(country.code);
+        opt.setAttribute("value", country.code);
+        opt.setAttribute("id", country.code);
+        opt.appendChild(opttext);
+        selector.appendChild(opt);
+    });
+
     //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
     let element = $("countdata");
@@ -80,7 +91,7 @@ const showCountries = function (e) {
     h3.appendChild(txt);
     div.appendChild(h3);
 
-    let countries = JSON.parse(e.target.responseText);
+    
     let sel = document.createElement('select');
     sel.setAttribute('id', 'chooseCountry');
     sel.addEventListener('change', getLang);
@@ -106,6 +117,10 @@ const showLang = function (e) {
 
     //Opret forbindelse til api continent indholdet
     let langs = JSON.parse(e.target.responseText);
+    console.log(langs);
+
+    let option = $(langs[0].countrycode);
+    option.setAttribute("selected", "selected");
 
     let div = document.createElement("div");
 
@@ -176,6 +191,12 @@ const showLang = function (e) {
         inputUp.setAttribute("type", "hidden");
         upForm.appendChild(inputUp);
 
+        let inputUp2 = document.createElement('input');
+        inputUp2.setAttribute("value", lang.language);
+        inputUp2.setAttribute("name", "language");
+        inputUp2.setAttribute("type", "hidden");
+        upForm.appendChild(inputUp2);
+
         let upButton = document.createElement('button');
         upButton.setAttribute("class", "upButton");
         let delU = document.createElement("I");
@@ -215,7 +236,6 @@ const showLang = function (e) {
     });
 
     div.appendChild(tabel);
-    makeForm();
     $("langdata").appendChild(div);
 };
 
@@ -226,15 +246,13 @@ const makeForm = function(e){
     let ctyForms = document.createElement("form");
     ctyForms.setAttribute("id", "lang");
     ctyForms.setAttribute("method", "POST");
-    ctyForms.setAttribute("action", "/lang");
+    ctyForms.setAttribute("action", "/language");
 
-    let cyinput1 = document.createElement("input");
-    cyinput1.setAttribute("name", "countrycode");
-    cyinput1.setAttribute("id", "countrycode");
-    cyinput1.setAttribute("type", "text");
-    cyinput1.setAttribute("placeholder", "Three cifre code");
-    ctyForms.appendChild(cyinput1);
+    let sel = document.createElement('select');
+    sel.setAttribute('id', 'countrycode');
+    sel.setAttribute("name", "countrycode");
 
+    ctyForms.appendChild(sel);
     let cyinput3 = document.createElement("input");
     cyinput3.setAttribute("name", "language");
     cyinput3.setAttribute("id", "language");

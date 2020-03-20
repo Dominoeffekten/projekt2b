@@ -85,7 +85,7 @@ const makeForm = function(e){
     let goverForms = document.createElement("form");
     goverForms.setAttribute("id", "gover");
     goverForms.setAttribute("method", "POST");
-    goverForms.setAttribute("action", "/goverments");
+    goverForms.setAttribute("action", "/gover");
 
     let goverinput2 = document.createElement("input");
     goverinput2.setAttribute("name", "name");

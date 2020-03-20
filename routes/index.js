@@ -108,6 +108,13 @@ router.get('/lang', async function(req, res, next) { // load the site
         subtitle: 'The language',
     });
 });
+router.post('/language', async function(req, res, next) {// add new country
+    let postLang = modLang.postLanguages(req);
+    res.render('lang', {
+        scriptLink:'/javascripts/lang.js',
+        subtitle: 'The Languages',
+    });
+});
 router.get('/lang/:city', async function(req, res, next) { // loads the db content 
     //console.log(req.params.city)
     let lang = await modLang.getLanguages({countrycode: req.params.city}, {sort: {name: 1}});
@@ -123,13 +130,13 @@ router.post('/lang', async function(req, res, next) {  // deletes country from d
     });
 });
 router.post('/langRead', async function(req, res, next) {
-    console.log(req.body)
-    let result = await modLang.getLanguages({name: req.body.countrycode}, {sort: {continent: 1}});
+    console.log(req.body);
+    let result = await modLang.getLanguages({countrycode: req.body.countrycode, language: req.body.language}, {sort: {continent: 1}});
     let countries = await modCountry.getCountries({}, {sort: {name: 1}});
 
     console.log(result);
     res.render('langData', {
-        title: "You are about to edit selected language: " + req.body.name,
+        title: "You are about to edit selected language: " + req.body.language,
         lang: result,
         count: countries,
     });
@@ -141,6 +148,13 @@ router.get('/goverments', async function(req, res, next) { // load the site
     res.render('goverments', {
         scriptLink:'/javascripts/gover.js',
         subtitle: 'The form of goverments'
+    });
+});
+router.post('/gover', async function(req, res, next) {// add new country
+    let postGover = modGover.postGover(req);
+    res.render('goverments', {
+        scriptLink:'/javascripts/gover.js',
+        subtitle: 'The form of governments',
     });
 });
 router.get('/gover', async function(req, res, next) {  // loads the db content 

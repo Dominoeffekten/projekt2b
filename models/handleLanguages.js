@@ -1,6 +1,7 @@
 "use strict";
 const mon = require("./mongooseWrap");
 const CountryLanguage = require("./CountryLanguage");
+const Country = require("./Country");
 
 exports.getLanguages = async function (que, sort) {
     try {
@@ -21,12 +22,12 @@ exports.delLanguage = async function (name) {
 }
 
 exports.postLanguages = async function (req) {
-    let chk = { countrycode: req.body.code, language: req.body.name };  // check object for existence
-    let languages = new Countrylanguage({                     // create obejct in db-format
-        countrycode: req.body.code,
-        language: req.body.name,
-        isofficial: req.body.continent,
-        percentage: req.body.region,
+    let chk = { countrycode: req.body.countrycode, language: req.body.language };  // check object for existence
+    let languages = new CountryLanguage({                     // create obejct in db-format
+        countrycode: req.body.countrycode,
+        language: req.body.language,
+        isofficial: req.body.isofficial,
+        percentage: req.body.percentage
     });
     try {
         let cs = await mon.upsert("localhost", "world", CountryLanguage, languages, chk);

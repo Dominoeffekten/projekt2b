@@ -19,3 +19,16 @@ exports.delGover = async function (name) {
         console.log(e);
     }
 }
+
+exports.postGover = async function (req) {
+    let chk = { name: req.body.name };  // check object for existence
+    let governmentForm = new GovernmentForm({ 
+        name: req.body.name
+    });
+    try {
+        let cs = await mon.upsert("localhost", "world", GovernmentForm, governmentForm, chk);
+        return;
+    } catch (e) {
+        console.log(e);
+    }
+}
