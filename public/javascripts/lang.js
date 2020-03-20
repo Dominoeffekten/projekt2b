@@ -185,8 +185,56 @@ const showLang = function (e) {
     });
 
     div.appendChild(tabel);
+    makeForm();
     $("langdata").appendChild(div);
 };
+
+const makeForm = function(e){ 
+    // lav en formular
+
+    let formularCity = $("langForm")
+    let ctyForms = document.createElement("form");
+    ctyForms.setAttribute("id", "lang");
+    ctyForms.setAttribute("method", "POST");
+    ctyForms.setAttribute("action", "/lang");
+
+    let cyinput1 = document.createElement("input");
+    cyinput1.setAttribute("name", "countrycode");
+    cyinput1.setAttribute("id", "countrycode");
+    cyinput1.setAttribute("type", "text");
+    cyinput1.setAttribute("placeholder", "Three cifre code");
+    ctyForms.appendChild(cyinput1);
+
+    let cyinput3 = document.createElement("input");
+    cyinput3.setAttribute("name", "language");
+    cyinput3.setAttribute("id", "language");
+    cyinput3.setAttribute("type", "text");
+    cyinput3.setAttribute("placeholder", "Language");
+    ctyForms.appendChild(cyinput3);
+
+    let cyinput4 = document.createElement("input");
+    cyinput4.setAttribute("name", "isofficial");
+    cyinput4.setAttribute("id", "isofficial");
+    cyinput4.setAttribute("type", "text");
+    cyinput4.setAttribute("placeholder", "Is official");
+    ctyForms.appendChild(cyinput4);
+
+    let cyinput5 = document.createElement("input");
+    cyinput5.setAttribute("name", "percentage");
+    cyinput5.setAttribute("id", "percentage");
+    cyinput5.setAttribute("type", "number");
+    cyinput5.setAttribute("placeholder", "Percentage");
+    ctyForms.appendChild(cyinput5);
+
+    let submitButton = document.createElement("button");
+    let buttonName = document.createTextNode("Add new city");
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.appendChild(buttonName);
+    ctyForms.appendChild(submitButton);
+
+    formularCity.appendChild(ctyForms);
+    // formular end
+}
 
 
 window.addEventListener("load", getContinents);                   // kick off JS
