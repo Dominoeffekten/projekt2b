@@ -74,6 +74,24 @@ router.get('/city', async function(req, res, next) { // load the site
         subtitle: 'The cities',
     });
 });
+router.post('/cities', async function(req, res, next) {// add new country
+    let postLang = modCities.postCity(req);
+    res.render('city', {
+        scriptLink:'/javascripts/citypage.js',
+        subtitle: 'The cities',
+    });
+});
+router.post('/cityRead', async function(req, res, next) {
+    console.log(req.body);
+    let result = await modCities.getCities({oldid: req.body.oldid}, {sort: {continent: 1}});
+    let countries = await modCountry.getCountries({}, {sort: {name: 1}});
+    console.log(result);
+    res.render('cityData', {
+        title: "You are about to edit selected city: " + req.body.name,
+        city: result,
+        count: countries,
+    });
+});
 router.get('/countries/:cont', async function(req, res, next) { // loads the db content 
     let countries = await modCountry.getCountries({continent: req.params.cont}, {sort: {name: 1}});
     //console.log(countries);

@@ -6,6 +6,7 @@ import { Ajax } from "./modules/Ajax.js";
  * Event handler for button - create ajax object and get data
  */
 const getContinents = function (ev) {
+    makeForm();
     let req = Object.create(Ajax);
     req.init();
     req.getFile("/continents", showContinents);
@@ -55,6 +56,16 @@ const showContinents = function (e) {
 }
 
 const showCountries = function (e) {
+    let countries = JSON.parse(e.target.responseText);
+    let selector = $("countrycode");
+    countries.forEach(function(country) {
+        let opt = document.createElement('option');
+        let opttext = document.createTextNode(country.code);
+        opt.setAttribute("value", country.code);
+        opt.setAttribute("id", country.code);
+        opt.appendChild(opttext);
+        selector.appendChild(opt);
+    });
 
     //here you put the ajax response onto your page DOM
     console.log(e.target.getResponseHeader("Content-Type"));
@@ -70,7 +81,7 @@ const showCountries = function (e) {
     h3.appendChild(txt);
     div.appendChild(h3);
 
-    let countries = JSON.parse(e.target.responseText);
+    
     let sel = document.createElement('select');
     sel.setAttribute('id', 'chooseCountry');
     sel.addEventListener('change', getCities);
@@ -96,6 +107,8 @@ const showCities = function (e) {
 
     //Opret forbindelse til api continent indholdet
     let cities = JSON.parse(e.target.responseText);
+    let option = $(cities[0].countrycode);
+    option.setAttribute("selected", "selected");
 
     let div = document.createElement("div");
 
@@ -131,38 +144,48 @@ const showCities = function (e) {
         let code = document.createTextNode(city.countrycode);
         let td3 = document.createElement('td');
         let pop = document.createTextNode(city.population);
+        
         let td4 = document.createElement('td');
+        let form1 = document.createElement('form');
+        form1.setAttribute("method", "POST");
+        form1.setAttribute("action", "/cityRead");
+        let input1 = document.createElement('input');
+        input1.setAttribute("value", city.oldid);
+        input1.setAttribute("name", "oldid");
+        input1.setAttribute("type", "hidden");
         let upButton = document.createElement('button');
         upButton.setAttribute("class", "upButton");
         let delU = document.createElement("I");
         delU.setAttribute("class", "far fa-edit");
         upButton.appendChild(delU);
+        form1.appendChild(input1);
+        form1.appendChild(upButton);
+        td4.appendChild(form1);
+
+        //delete button
         let td5 = document.createElement('td');
         let form = document.createElement('form');
         form.setAttribute("method", "POST");
         form.setAttribute("action", "/city");
-
         let input = document.createElement('input');
         input.setAttribute("value", city.oldid);
         input.setAttribute("name", "name");
         input.setAttribute("type", "hidden");
-
         let delButton = document.createElement('button');
         delButton.setAttribute("class", "delButton");
         let delI = document.createElement("I");
         delI.setAttribute("class", "fas fa-times");
         delButton.appendChild(delI);
-
-
-        td.appendChild(name);
-        td1.appendChild(code);
-        td3.appendChild(pop);
-        td4.appendChild(upButton);
-
         delButton.appendChild(delI);
         form.appendChild(input);
         form.appendChild(delButton);
         td5.appendChild(form);
+        // delete button end
+
+        td.appendChild(name);
+        td1.appendChild(code);
+        td3.appendChild(pop);
+        
 
         tr.appendChild(td);
         tr.appendChild(td1);
@@ -174,7 +197,6 @@ const showCities = function (e) {
 
     div.appendChild(tabel);
     $("citydata").appendChild(div);
-    makeForm();
 };
 
 const makeForm = function(e){
@@ -186,7 +208,7 @@ const makeForm = function(e){
     let ctyForms = document.createElement("form");
     ctyForms.setAttribute("id", "city");
     ctyForms.setAttribute("method", "POST");
-    ctyForms.setAttribute("action", "/citypage");
+    ctyForms.setAttribute("action", "/cities");
 
     let cyinput2 = document.createElement("input");
     cyinput2.setAttribute("name", "name");
@@ -195,11 +217,9 @@ const makeForm = function(e){
     cyinput2.setAttribute("placeholder", "Name");
     ctyForms.appendChild(cyinput2);
 
-    let cyinput1 = document.createElement("input");
+    let cyinput1 = document.createElement("select");
     cyinput1.setAttribute("name", "countrycode");
     cyinput1.setAttribute("id", "countrycode");
-    cyinput1.setAttribute("type", "text");
-    cyinput1.setAttribute("placeholder", "Three cifre code");
     ctyForms.appendChild(cyinput1);
 
     let cyinput3 = document.createElement("input");

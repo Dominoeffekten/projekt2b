@@ -11,6 +11,23 @@ exports.getCities = async function (que, sort) {
     }
 }
 
+exports.postCity = async function (req) {
+    let chk = { name: req.body.name, countrycode: req.body.countrycode };  // check object for existence
+    let city = new City({                     // create obejct in db-format
+        oldid: req.body.oldid,
+        name: req.body.name,
+        countrycode: req.body.countrycode,
+        district: req.body.district,
+        population: req.body.population
+    });
+    try {
+        let cs = await mon.upsert("localhost", "world", City, city, chk);
+        return;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 exports.delCities = async function (name) {
     try {
         let cs = await mon.remove("localhost", "world", City, name);

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h1= title
+    h2= subtitle
+
+        form(id='langEnterForm' action='/cities' method='POST')
+            table
+                tr
+                    td.col_l Country code
+                    td
+                        select(name='countrycode' value=`${city[0].countrycode}`)
+                            each country in count
+                                if city[0].countrycode === country.code
+                                    option(selected="selected") #{country.code}
+                                else
+                                    option #{country.code}
+                tr
+                    td.col_l Language
+                    td
+                        input(type='text' name='name' value=`${city[0].name}` placeholder='Language' required)
+                tr
+                    td.col_l Is official
+                    td
+                        input(type='text' name='district' value=`${city[0].district}` placeholder='T or F' required)
+                tr
+                    td.col_l Percentage
+                    td
+                        input(type='number' name='population' value=`${city[0].population}` placeholder='Percentage')
+                tr
+                    td
+                    td
+                        input(type='submit' value='Update city' id='Go')
