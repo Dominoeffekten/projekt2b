@@ -51,57 +51,37 @@ th, td {
     margin: 0 auto;
 }
 
-
-input{
-    font-size: 14px;
+#countryForm form, #cityForm form, #langForm form, #goverForm form {
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
-#countryForm input, #langForm input, #goverForm input, #cityForm input {
+
+input, select {
     width:30%;
-    margin:5px;
     padding:5px;
+    margin:5px 0;
+    border:1px solid grey;
+    border-radius: 3px;
+    font-size:14px;
 }
 
-#goverForm input {
-    width: 80%;
-    margin-left: 20px;
-}
+#cityForm input, #cityForm select, 
+#langForm input, #langForm select {width:47.5%;}
+#goverForm input {width:100%;}
 
-input[type=text], select, input[type=number] {
-    width:30%;
-    margin:5px;
-    padding:5px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
 #submitButton {
-    display:block;
     width:50%;
     margin:15px auto;
-    font-size:18px;
-}
-
-#goverForm #submitButton {
-    width: 80%;
-}
-
-#goverment {
-    display:flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-}
-.upButton, .delButton {
-    background-color:transparent;
-    width:100%;
-    height:100%;
-    font-size:25px;
-    margin:0;
-    padding:0;
     display:block;
-    border:none;
+    padding:5px;
 }
-#citydata, #langdata{
-    margin-top: 25px;
+.delButton, .upButton {
+    font-size:20px;
+    background-color:transparent;
+    border:none;
+    text-align:center;
+    display:block;
+    margin:auto;
 }
