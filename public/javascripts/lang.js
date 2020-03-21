@@ -275,7 +275,7 @@ const makeForm = function(e){
     ctyForms.appendChild(cyinput5);
 
     let submitButton = document.createElement("button");
-    let buttonName = document.createTextNode("Add new city");
+    let buttonName = document.createTextNode("Add new language");
     submitButton.setAttribute("id", "submitButton");
     submitButton.appendChild(buttonName);
     ctyForms.appendChild(submitButton);
