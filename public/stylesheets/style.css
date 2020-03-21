@@ -43,21 +43,29 @@ th, td {
 .col_num {
     text-align: right;
 }
-#countryForm {
+#countryForm, #langForm, #goverForm, #cityForm {
     width:50%;
     display: flex;
     justify-content: space-between;
     padding:20px;
     margin: 0 auto;
 }
+
+
 input{
     font-size: 14px;
 }
-#countryForm input {
+#countryForm input, #langForm input, #goverForm input, #cityForm input {
     width:30%;
     margin:5px;
     padding:5px;
 }
+
+#goverForm input {
+    width: 80%;
+    margin-left: 20px;
+}
+
 input[type=text], select, input[type=number] {
     width:30%;
     margin:5px;
@@ -74,6 +82,11 @@ input[type=text], select, input[type=number] {
     margin:15px auto;
     font-size:18px;
 }
+
+#goverForm #submitButton {
+    width: 80%;
+}
+
 #goverment {
     display:flex;
     justify-content: space-between;
